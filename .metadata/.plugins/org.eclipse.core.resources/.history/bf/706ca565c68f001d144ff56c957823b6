@@ -1,0 +1,5 @@
+package gallery.util;
+
+public class FileManager {
+
+}

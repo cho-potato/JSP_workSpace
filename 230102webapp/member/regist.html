@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            width: 500px;
+            border: 2px solid gray;
+            border-radius: 5px;
+            margin: auto;
+        }
+    </style>
+    <script>
+        // 등록 요청
+        // let id = "javase";
+        // let pass = "1234";
+        function regist() {
+            // 자바스크립트는 HTML과 함께 실행되므로 소스를 보안상 숨길 수가 없다
+            // 즉, 클라이언트의 웹브라우저상에서 실행되기 때문인데 Oracle, MySQL과 같은 DB와 직접 연결이 불가능하다
+            // 만일, DB 접속 문자열을 JS에 작성할 경우 보안이 불가능하다
+            // 직접 DB연동을 못하므로 간접적으로 JSP에게 요청한다
+            // 따라서 아래의 작성폼을 다 작성하고 나서 톰캣서버에 작성폼 요소값들을 전송하자
+            // html form태그를 이용하여 데이터 전송하기
+            let form1 = document.getElementById("form1");
+            form1.action="/member/insert.jsp" // 서버 주소
+            // form1.action="localhost:8888/member/insert.jsp"; // html과 jsp가 같은 주소면 주소값을 명시하지 않는다
+            form1.submit=""; // 서버에 전송 일으킴
+// ---------------------------------------------------------- 서버에 전송한 상태 ----------------------------------------------------------
+        }
+
+        // 문서로드 먼저
+        window.addEventListener("load", function () {
+            let bt = document.getElementById("bt");
+            bt.addEventListener("click", function () {
+                regist();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- form 태그는 양식 요소들을 대상으로 어디까지를 전송할지 그 범위를 설정한다 -->
+    <form id="form1" method = "post">
+    <div id="wrapper">
+        <div>
+            <label for="m_id">ID</label>
+            <!-- id끼리만 중복되지 않으면 된다 id랑 name은 중복되어도 가능 -->
+            <!-- id는 유일하지만 name은 배열에도 쓸 수 있었지 -->
+            <!-- name은 서버로 날리는 변수(그릇)역할도 해줌 -->
+            <input type="text" name="id" id="m_id"> 
+        </div>
+        <div>
+            <label for="m_pass">PASS</label>
+            <!-- label for=""에서 for는 스마트폰을 염두에 둔 html:5라서 있는거임 -->
+            <input type="password" name="pass" id="m_pass">
+        </div>
+        <div>
+            <label for="m_name">NAME</label>
+            <input type="text" name="id" id="m_name">
+        </div>
+        <div>
+            <button id="bt">등록</button>
+        </div>
+    </div>
+</form>
+</body>
+
+</html>

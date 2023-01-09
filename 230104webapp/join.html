@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=button] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        function send() {
+            let count = 0; // 취미가 체크되어있는지 확인해주는 변수
+
+            // 유효성 체크(데이터가 제대로 되었는지 체크하는 것)
+            if ($("input[name='id']").val() == "") {
+                alert("아이디");
+                $("input[name='id']").focus();
+                return; // 이 함수를 호출한 곳으로 실행부를 돌려보냄
+            }
+            if ($("input[name='pass']").val() == "") {
+                alert("비밀번호");
+                $("input[name='pass']").focus();
+                return;
+            }
+            for (let i = 0; i < $("input[name='hobby_name']").length; i++) {
+                let ch = $("input[name='hobby_name']")[i]; 
+                // $($("input[name='hobby_name']")[i]).val ()를 한번 더 안감싸주면 [0]가 주체가 되어버림
+                // 위처럼 안할거면 빼버리면 됨(undefined 나오니까 자바스크립트용으로 만들자)
+                if (ch.checked) {
+                    count++;
+                }
+            }
+            console.log("체크", count);
+            if (count < 1) {
+                alert("취미");
+                return;
+            }
+            // for (let i = 0; i < ch.length; i++) {
+            //     let hobby = document.getElementsByName("hobby_name");
+            //     if (hobby[i].checked) {
+            //         count++;
+            //     }
+            // }
+            // if (count == 0) {
+            //     alert("취미");
+            //     return;
+            // }
+
+            // $("form").attr("action", "/regist.jsp"); // form 태그가 갖고 있는 속성(attribute) 
+            // $("form").attr("method", "post");
+            // 위처럼 따로 두지않고 복합적으로  JSON으로 함 보통
+            $("form").attr({
+                "action": "/regist.jsp",
+                "method": "post"
+            });
+            $("form").submit();
+        }
+        // 알고있는 자바스크립트 문법이 어떻게 변경되는지 보면 됨
+        // JavaScript를 줄여쓰는 라이브러리
+        // jquery 문법. 누구를 어떻게 구조로 되어 있다
+        // ex) $(누구를) 함수(어떻게)
+        // 누구를 자리에 작성할 수 있는 코드는 바로 CSS선택자가 올 수 있다
+        $(function () {
+            alert("단축됐어");
+        });
+        $(document).ready(function () {
+            $("#bt").click(function () {
+                send(); // 서버에 전송
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <h3>Contact Form</h3>
+
+    <div class="container">
+        <form>
+            <div>
+                <label for="id">아이디</label>
+                <input type="text" id="fname" name="id" placeholder="Your ID..">
+            </div>
+
+            <div>
+                <label for="pass">패스워드</label>
+                <input type="text" id="lname" name="pass" placeholder="Your password..">
+            </div>
+
+            <div>
+                <label for="hobby">취미</label>
+                영화<input type="checkbox" name="hobby_name" value="영화">
+                독서<input type="checkbox" name="hobby_name" value="독서">
+                운동<input type="checkbox" name="hobby_name" value="운동">
+                프로그래밍<input type="checkbox" name="hobby_name" value="프로그래밍">
+            </div>
+            <br>
+            <div>
+                <label for="subject">메일수신</label>
+                YES<input type="radio" name="mail_receive" value="yes" checked="true">
+                NO<input type="radio" name="mail_receive" value="no">
+            </div>
+            <br>
+            <div>
+                <input type="button" value="전솔" id="bt">
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

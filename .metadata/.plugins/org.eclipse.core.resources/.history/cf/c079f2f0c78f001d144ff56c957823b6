@@ -1,0 +1,5 @@
+package gallery.repository;
+
+public class GalleryDAO {
+
+}

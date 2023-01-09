@@ -1,0 +1,44 @@
+
+-- Oracle 버전 -- 
+
+-- 데이터베이스 생성 -- 
+create tablespace jspspace
+datafile 'C:\oraclexe\app\oracle\oradata\XE\jspspace.dbf'
+size 5M;
+
+-- 유저 생성 --
+create user jsp
+identified by 1234
+default tablespace jspspace
+quota unlimited on jspspace;
+
+-- 권한 부여 --
+grant create session, create table, create sequence to jsp;
+
+-- 회원 테이블 및 시퀀스 만들기 --
+
+create table member(
+ member_idx number 
+, id varchar2(30)
+, pass varchar2(30)
+, mail_receive varchar2(3) -- yes, no 
+, primary key(member_idx)
+, constraint chk_mail_receive check(mail_receive='yes' or mail_receive='no')
+-- constraint(제약조건을 줄거야) 제약조건약자(이름)_부모_자식 제약조건종류 --
+, regdate date default sysdate
+);
+
+create sequence seq_member
+increment by 1
+start with 1;
+
+create table hobby(
+ hobby_idx number primary key
+, member_idx number
+, hobby_name varchar2(30)
+, constraint fk_member_hobby foreign key(member_idx) references member(member_idx)
+);
+
+create sequence seq_hobby
+increment by 1
+start with 1;

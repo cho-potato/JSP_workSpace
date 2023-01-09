@@ -1,0 +1,28 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>갤러리 등록</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td><input type="text" placeholder="제목"></td>
+		</tr>
+		<tr>
+			<td><input type="text" placeholder="작성자"></td>
+		</tr>
+		<tr>
+			<textarea placeholder="내용"></textarea>
+		</tr>
+		<tr>
+			<input type="button" value="">
+		</tr>
+		<tr>
+			<input type="button" value="">
+		</tr>
+	</table>
+</body>
+</html>

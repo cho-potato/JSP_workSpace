@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=button] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=button]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+    <script>
+        //js를 좀더 단순하게 사용할순 없나?jquery
+        //load를 하는 이유?
+        window.addEventListener("load", function(){
+            //ckeditor 구현
+            ClassicEditor.create( document.querySelector( '#content' ) ).catch( error => {
+            console.error( error );
+        } );
+            
+            
+            let bt=document.querySelector("input[type=button]");
+            //selector: css의 선택자 , css양식 그대로 사용 가능
+            bt.addEventListener("click", function(){
+                console.log("눌렀어");
+                //서버에 파라미터 전송하기, 하는 이유? html은  능력이 없음
+                //content의 데이터의 양이 많으므로 body에 실어 보내야하기 때문에 post 방식으로 전송
+                //post로 전송하려면 form 태그를 이용하여 전송해야 한다. 
+                let form=document.querySelector("form");
+                //서버로 전송하기 위해서 필수적인 속성
+                //1) 서버의 주소 action  2) 전송방법method (get, post)
+                form.submit();//전송!!
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <h3>Contact Form</h3>
+
+    <div class="container">
+        <form method="post" action="/notice/regist.jsp">
+            <label for="fname">제목</label>
+            <input type="text" id="fname" name="title" placeholder="Your name..">
+
+            <label for="lname">작성자</label>
+            <input type="text" id="lname" name="writer" placeholder="Your last name..">
+
+            <label for="subject">내용</label>
+            <textarea id="content" name="content" placeholder="Write something.." style="height:200px"></textarea>
+            <!-- submit는 현재 form 태그의 내용을 무조건 전송하므로 무조건 전송을 방지하기
+            위해 일반 button으로 변경 -->
+            <input type="button" value="Submit">
+        </form>
+    </div>
+
+</body>
+
+</html>

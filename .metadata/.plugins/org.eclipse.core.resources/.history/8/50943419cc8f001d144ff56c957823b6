@@ -1,0 +1,6 @@
+package gallery.repository;
+
+// Gallery 테이블에 대한 CRUD만을 수행 
+public class GalleryDAO {
+
+}

@@ -1,0 +1,27 @@
+-- MySQL 버전 --
+
+-- 데이터베이스 생성 -- 
+create database jsp;
+
+-- 유저 생성 -- 
+use jsp;
+
+-- MySQL 테이블 생성 -- 
+create table member(
+ member_idx int auto_increment
+, id varchar(30)
+, pass varchar(30)
+, mail_receive varchar(3) -- yes, no 
+, primary key(member_idx)
+, constraint chk_mail_receive check(mail_receive='yes' or mail_receive='no')
+-- constraint(제약조건을 줄거야) 제약조건약자(이름)_부모_자식 제약조건종류 --
+, regdate timestamp default now()
+) default character set utf8;
+
+-- MySQL 테이블 생성 -- 
+create table hobby(
+ hobby_idx int auto_increment primary key
+, member_idx int
+, hobby_name varchar(30)
+, constraint fk_member_hobby foreign key(member_idx) references member(member_idx)
+) default character set utf8;
