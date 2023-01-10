@@ -1,0 +1,26 @@
+package gallery.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+
+// 이미지 파일을 포함한 글 수정
+public class EditServlet extends HttpServlet{
+	ServletContext context; // JSP에선 application 내장객체
+	int maxSize = 1024*(1024*5); // 최대 파일 사이즈 
+	String savePath; // 저장될 경로
+		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		context = request.getServletContext();
+		
+		savePath = context.getRealPath("/data/");
+		
+		MultipartRequest multi = new MultipartRequest(request, savaPath, maxSize, "UTF-8");
+	}
+}

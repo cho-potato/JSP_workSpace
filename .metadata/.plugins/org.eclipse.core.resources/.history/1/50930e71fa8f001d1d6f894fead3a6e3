@@ -1,0 +1,58 @@
+<%@page import="gallery.domain.Gallery"%>
+<%@page import="gallery.repository.GalleryDAO"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+
+<%! GalleryDAO galleryDAO = new GalleryDAO(); %>
+
+<%
+//1) list.jsp에서 파라미터를 제대로 넘겨야 한다
+//2) idx를 파라미터로 넘겨받아 변수에 받으면 된다
+//3) 파라미터명은 notice_idx로 하기
+
+int gallery_idx = Integer.parseInt(request.getParameter("gallery_idx"));
+String sql = "select * from notice where gallery_idx=" + gallery_idx;
+out.print(sql);
+
+// 한 건 가져오기
+Gallery gallery = galleryDAO.select(gallery_idx);
+
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body bgcolor="yellow">
+	<form>
+		<table>
+					<input type="hidden" name="gallery_idx"
+				value="<%=gallery.getgGallery_idx()%>" style="background: yellow">
+			<tr>
+				<td><input type="text" name="title" value="<%=gallery.getTitle() %>"></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="writer" value="<%=gallery.getWriter() %>"></td>
+			</tr>
+			<tr>
+				<td><textarea name="content" style="height:200px"><%=gallery.getContent()%></textarea></td>
+			</tr>
+			<tr>
+				<td>
+				 	<img src="/data/<%=gallery.getFilename()%>" width="500px">
+				</td>
+			</tr>
+			<tr>
+				<td><input type="file" name="file"></td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="등록">
+					<input type="button" value="목록">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+package member.repository;
+
+import gallery.pool.PoolManager;
+
+public class MemberDAO {
+	PoolManager pool = PoolManager.getInstance();
+	
+	public int insert() {
+		int result = 0;
+		
+		String sql = "insert into member(member_idx, id, pass, name)";
+		
+		return result;
+		
+
+	}
+}

@@ -3,7 +3,6 @@
 <%@page import="javax.naming.InitialContext"%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
 
-
 <%
 // 설정된 커넥션 풀이 제대로 동작할 수 있는지 체크
 
@@ -16,4 +15,5 @@ DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/oracle"); // java
 Connection conn = ds.getConnection();
 out.print(conn);
 
+conn.close();
 %>

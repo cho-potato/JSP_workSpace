@@ -1,0 +1,23 @@
+package gallery.util;
+
+import java.util.List;
+
+// 페이징 처리 계산을 담당하는 객체
+public class PagaManager {
+	private int totalRecord; //  총 레코드 수
+	private int pageSize = 10; // 페이지당 보여질 레코드 수
+	private int totalPage; // 총 페이지 수
+	private int blockSize; // 블럭당 보여질 페이지 수
+	private int currentPage; // 현재 페이지
+	private int firstPage; // 블럭당 시작페이지
+	private int lastPage; // 블럭당 마지막 페이지
+	private int curPos; // 페이지당 ArrayList의 시작 index
+	private int num; // 페이지당 시작 번호
+	
+	public void init(List list) {
+		totalRecord = list.size();
+		totalPage = Math.ceil((float)totalRecord/pageSize);
+		
+	}
+	
+}

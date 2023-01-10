@@ -1,4 +1,0 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"%>
-<% 
-	// 파라미터를 받아 오라클에 넣기
-%>

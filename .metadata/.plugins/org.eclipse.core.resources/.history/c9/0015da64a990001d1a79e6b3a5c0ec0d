@@ -1,0 +1,7 @@
+package member.repository;
+
+import gallery.pool.PoolManager;
+
+public class MemberDAO {
+	PoolManager pool = pool.getInstance();
+}

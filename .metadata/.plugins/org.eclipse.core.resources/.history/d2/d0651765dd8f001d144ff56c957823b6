@@ -1,0 +1,39 @@
+package gallery.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import gallery.domain.Gallery;
+import gallery.pool.PoolManager;
+
+// Gallery 테이블에 대한 CRUD만을 수행 
+public class GalleryDAO {
+	PoolManager pool=PoolManager.getInstance();
+	
+	// insert
+	public int insert (Gallery gallery) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		conn = pool.getConnection(); // 접속이 아니라 대여 (접속은 되어있는 상태임, 속도 향상을 위해)
+		
+		String sql = "insert into gallery(gallery_idx, title, writer, content, filename)";
+		sql+= " values(seq_gallery.nextval, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, gallery.getTitle());
+			pstmt.setString(2, gallery.getWriter());
+			pstmt.setString(3, gallery.getContent());
+			pstmt.setString(4, gallery.getFilename());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+}

@@ -1,0 +1,59 @@
+<%@page import="gallery.domain.Gallery"%>
+<%@page import="gallery.repository.GalleryDAO"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+
+<%! GalleryDAO galleryDAO = new GalleryDAO(); %>
+<%
+Gallery gallery = galleryDAO.select();
+
+%>
+
+<%
+//1) list.jsp에서 파라미터를 제대로 넘겨야 한다
+//2) idx를 파라미터로 넘겨받아 변수에 받으면 된다
+//3) 파라미터명은 notice_idx로 하기
+
+int notice_idx = Integer.parseInt(request.getParameter("notice_idx"));
+String sql = "select * from notice where notice_idx=" + notice_idx;
+out.print(sql);
+
+// 한 건 가져오기
+Gallery gallery = galleryDAO.select(gallery_idx);
+// 조회수 증가
+galleryDAO.updateHit(notice_idx);
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body bgcolor="yellow">
+	<form>
+		<table>
+			<tr>
+				<td><input type="text" placeholder="제목" name="title"></td>
+			</tr>
+			<tr>
+				<td><input type="text" placeholder="작성자" name="writer"></td>
+			</tr>
+			<tr>
+				<td><textarea placeholder="내용" name="content"></textarea></td>
+			</tr>
+			<tr>
+				area
+			</tr>
+			<tr>
+				<td><input type="file" name="file"></td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="등록">
+					<input type="button" value="목록">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
