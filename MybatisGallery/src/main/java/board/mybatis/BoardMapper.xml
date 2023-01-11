@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">
+
+	<!-- insert 문 -->
+	<insert id="insert" parameterType="Board"> <!-- DTO 가져오기 : parameterType -->
+		insert into board(board_idx, title, writer, content, filename)
+		<!-- 자바가 아니라서 ?를 못 씀 따라서 #{}를 씀 프로그래밍 언어가 아니라 태그임 -->
+		values(seq_board.nextval, #{title}, #{writer}, #{content}, #{filename})
+		<!-- Mybatis는 자바 객체와 SQL문 사이의 매핑을 자동으로 처리하는, 일명 SQL Mapper 라고 불린다 따라서, 
+			개발자가 사용할 DTO를 parameterType으로 명시해 놓으면 해당 DTO의 멤버변수와 SQL문과의 매핑이 자동으로 이루어진다 
+			주의할 점은, #{}에 넣을 값은 반드시 해당 DTO의 멤버변수명이어야 한다 -->
+	</insert>
+	
+	<select id="selectAll" resultType="Board"> 
+		select * from board order by board_idx desc
+	</select>
+	
+	<select id="select" resultType="Board" parameterType="int"> 
+		select * from board where board_idx = #{board_idx}
+	</select>
+	
+	<update id="update" parameterType="Board">
+		update board set title=#{title}, writer=#{writer}, content=#{content}, filename=#{filename} where board_idx=#{board_idx}
+	</update>
+</mapper>

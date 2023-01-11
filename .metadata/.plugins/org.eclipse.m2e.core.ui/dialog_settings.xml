@@ -2,12 +2,16 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="YourbatisGallery"/>
+			<item value="MybatisGallery"/>
 			<item value="GalleryProject"/>
 			<item value="NoticeProject"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="YourbatisGallery"/>
+			<item value="MybatisGallery"/>
 			<item value="GalleryProject"/>
 			<item value="NoticeProject"/>
 		</list>

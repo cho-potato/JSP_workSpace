@@ -106,9 +106,9 @@
 					Note: The pattern used is equivalent to using pattern="common" -->
 				<Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-				<Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\NoticeProject" path="/NoticeProject" reloadable="true" source="org.eclipse.jst.jee.server:NoticeProject"/>
-				<Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\GalleryProject" path="" reloadable="true" source="org.eclipse.jst.jee.server:GalleryProject"/>
-			</Host>
+				
+				
+			<Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MybatisGallery" path="" reloadable="true" source="org.eclipse.jst.jee.server:MybatisGallery"/><Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\YourbatisGallery" path="/YourbatisGallery" reloadable="true" source="org.eclipse.jst.jee.server:YourbatisGallery"/></Host>
 		</Engine>
 	</Service>
 </Server>
