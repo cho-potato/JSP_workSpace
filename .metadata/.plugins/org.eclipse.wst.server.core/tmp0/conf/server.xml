@@ -29,6 +29,7 @@
 			자바에서는 환경정보를 외부 파일에 두고, 자바 코드에서는 해당 자원의 이름을 통하여 정보에 접근하는 방법을 가리켜 JNDI(Java Naming Directory Interface)라고 한다
 			외부 자원에 이름을 붙여놓고 그 이름을 통해 자바에 접근하는 기술 -->
 		<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="10" maxWait="3000" name="jdbc/oracle" password="1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="jsp"/>
+		<Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="3000" name="jdbc/mysql" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/jsp?characterEncoding=utf8" username="root"/>
 	</GlobalNamingResources>
 
 	<!-- A "Service" is a collection of one or more "Connectors" that share 
@@ -108,7 +109,7 @@
 
 				
 				
-			<Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MybatisGallery" path="" reloadable="true" source="org.eclipse.jst.jee.server:MybatisGallery"/><Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\YourbatisGallery" path="/YourbatisGallery" reloadable="true" source="org.eclipse.jst.jee.server:YourbatisGallery"/></Host>
+			<Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\20230112CommentApp" path="/CommentApp" reloadable="true" source="org.eclipse.jst.jee.server:20230112CommentApp"/><Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ReplyApp" path="/ReplyApp" reloadable="true" source="org.eclipse.jst.jee.server:ReplyApp"/><Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\20230113StoreApp" path="" reloadable="true" source="org.eclipse.jst.jee.server:20230113StoreApp"/></Host>
 		</Engine>
 	</Service>
 </Server>

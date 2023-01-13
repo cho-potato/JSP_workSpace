@@ -19,6 +19,7 @@
 
 	<!-- Uncomment this to disable session persistence across Tomcat restarts -->
 	<!-- <Manager pathname="" /> -->
-	<ResourceLink type="javax.sql.DataSource"
-		name="jdbc/oracle" global="jdbc/oracle" />
+	
+	<ResourceLink type="javax.sql.DataSource" name="jdbc/mysql" global="jdbc/mysql" />
+	<ResourceLink type="javax.sql.DataSource" name="jdbc/oracle" global="jdbc/oracle" />
 </Context>

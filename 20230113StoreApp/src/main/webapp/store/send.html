@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	let xhttp; // 비동기 통신객체를 담을 변수
+
+	function send() {
+		xhttp = new XMLHttpRequest(); // 객체 생성
+		let name = document.getElementById("name");
+		xhttp.open("GET", "/store/test.jsp?name="+name.value); // 어떤 방식으로 어떤  URL에 ,,,
+		
+		// 서버로부터 응답이 언제 왔는지 등을 알 수 있는 이벤트
+		// 즉, 서버와의 네트워크 통신상태를 알 수 있다
+		console.log("A");
+		xhttp.onreadystatechange = function() {
+			console.log("readystate is ", this.readystate);
+			if(this.readyState == 4 && this.status == 200) {
+				// alert("고양이가 보내준 데이터는 " + this.responseText);
+				document.getElementById("msg").innerText=this.responseText;
+			}	
+		}
+		xhttp.send(); // 이 시점에 요청이 일어남
+		console.log("B");
+	}
+
+</script>
+</head>
+<body>
+
+	<input type="text" id="name">
+		<button onclick="send()">전송</button>
+		
+			<div id="msg">현재 아무 것도 없다</div>
+</body>
+</html>

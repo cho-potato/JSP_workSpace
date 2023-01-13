@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="store.domain.Category" alias="Category"/>
+		<typeAlias type="store.domain.Store" alias="Store"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="JNDI">
+				<!-- 컨테이너에서 지원하는 커넥션풀을 JNDI로 사용 -->
+				<property name="data_source" value="java:comp/env/jdbc/mysql" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="store/mybatis/CategoryMapper.xml" />
+		<mapper resource="store/mybatis/StoreMapper.xml" />
+	</mappers>
+</configuration>

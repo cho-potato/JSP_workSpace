@@ -1,39 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-	id="WebApp_ID" version="4.0">
-	<display-name>NoticeProject</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-	</welcome-file-list>
-
-	<!-- 글 등록용 서블릿 매핑 -->
-	<servlet>
-		<servlet-name>writeServlet</servlet-name>
-		<servlet-class>notice.servlet.WriteServlet</servlet-class>
-		<init-param> <!-- 최초에 생성할 때 전하고 싶은 정보를 담는 -->
-			<param-name>today</param-name>
-			<param-value>friday</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>writeServlet</servlet-name>
-		<url-pattern>/notice/regist</url-pattern>
-	</servlet-mapping>
-
-	<!-- 글 삭제용 서블릿 매핑 -->
-	<servlet>
-		<servlet-name>delSevlet</servlet-name>
-		<servlet-class>notice.servlet.DeleteServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>delSevlet</servlet-name>
-		<url-pattern>/notice/delete</url-pattern>
-	</servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>20230106NoticeProject</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>writeServlet</servlet-name>
+    <servlet-class>notice.servlet.WriteServlet</servlet-class>
+    <init-param>
+      <param-name>today</param-name>
+      <param-value>friday</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>writeServlet</servlet-name>
+    <url-pattern>/notice/regist</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>delSevlet</servlet-name>
+    <servlet-class>notice.servlet.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>delSevlet</servlet-name>
+    <url-pattern>/notice/delete</url-pattern>
+  </servlet-mapping>
 </web-app>

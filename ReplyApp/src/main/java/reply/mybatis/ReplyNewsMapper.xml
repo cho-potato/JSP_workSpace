@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reply.mybatis.ReplyNewsMapper">
+
+	<insert id="insert" parameterType="ReplyNews">
+		insert into news(news_idx, title, writer, content)
+		values(seq_news_idx.nextval, #{title}, #{writer}, #{content})
+	</insert>
+	
+	<select id="seletAll" resultType="ReplyNews">
+		select * from news order by news_idx desc
+	</select>
+	
+	<select id="select" resultType="ReplyNews" parameterType="int">
+		select * from news where news_idx=#{news_idx}		
+	</select>
+	
+	<update id="update" parameterType="ReplyNews">
+		update news set title=#{title}, writer=#{writer}, content=#{content} where news_idx=#{news_idx}
+	</update>
+		
+	<delete id="delete" parameterType="int">
+		delete from news where news_idx=#{news_idx}	
+	</delete>
+	
+</mapper>

@@ -1,0 +1,128 @@
+Mybatis - 코멘트 게시판
+20230112CommentApp
+
+1교시
+1. maven 전환
+ (target 폴더 생성 - 실행에 필요한 것들을 저장)
+2. 의존성 라이브러리 설치( 파일업로드는 필요없음 코멘트니까)
+- DB 드라이버 / lombok / mybatis / 
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.6</version>
+		</dependency>
+
+	</dependencies>
+3. 톰캣서버 배포
+ - 제대로 되는지 확인
+4. 테이블 생성( 뉴스테이블 / 코멘트 테이블)
+- Mybatis로 join문 만들기
+- comment는 예약어일 수 있으니 comments로 
+news 테이블
+제목 작성자 내용 등록일 조회수
+(title writer content regdate hit)
+create table news(
+ news_idx number primary key
+, title varchar2(30)
+, writer varchar2(30)
+, content clob
+, regdate date default sysdate
+, hit number default 0
+)
+
+create sequence seq_news
+increment by 1
+start with 1;
+
+코멘트 테이블
+댓글 메시지, 작성자, 등록일
+(msg, author, writedate)
+create table comments(
+ comments_idx number primary key
+, news_idx number
+, msg clob
+, author varchar2(30)
+, writedate date default sysdate
+, constraint fk_news_comments foreign key(news_idx) references news(news_idx)
+)
+
+create sequence seq_comments
+increment by 1
+start with 1;
+
+5. DTO  만들기
+6. 디자인 가져오기 (부트스트랩)
+- webapp 폴더 안에 inc 폴더 만들고 header_link.jsp에 작성
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+7. list.jsp 작성 
+<%@ include file="/inc/header_link.jsp"%>
+div 복 붙
+8. 페이징 처리
+2교시
+mybatis xml 설정(config.xml)
+싱글턴 생성 MybatisConfig.java
+
+
+RegistServlet 생성
+
+3교시
+RegistServlet에 String 추가
+DTO에 채우기
+NewsDAO 생성
+맵퍼 생성 (NewsMapper / CommentsMapper)
+DAO와 맵퍼 서로 매칭하면서 코딩함
+regist서블릿 가서 코딩
+
+Mybatis는 SQL Mapper임
+Mybatis - SQL Mapper (한국) SQL문과 자바 객체와의 매핑
+Hibernate - ORMapper(외국) Table 과 자바 객체와 매핑 자동으로 (SQL문 없음)
+Object Relation Mapper
+
+객체화의 매핑에만 관심있는거임(DTO의 매핑)
+select 계열은 ArrayList를 반환
+SQl ------- MAPPER
+
+4교시
+등록버튼 되니까 처리하는 객체 만들거임 일명 메세지객체
+
+list.jsp 가서 제목 작성자 그거 다 만듦
+상세페이지 만들거임
+상세보기는 댓글디자인도 들어갈건ㄴ데 write.jsp 복붙함
+5교시
+상세보기니까 mybatis에 있어야 함(해놨음 3교시에)
+자동매핑이 아닌 개발자가 나서야 조인문 설정 가능
+수동매핑 : resultMap 하고 <a> 태그걸고 content.jsp 가서 선언하고 news_idx받아오고
+
+자바는 조인이 안된다
+
+자식 요소가 없을 때는 닫는 태그 / 로 커버가능
+6교시
+// 댓글 등록 Servlet
+// 파라미터 받기
+// DTO에 담기
+// commments 한 건 넣기 (-> commentsMapper)
+
+7교시
+숙제&자습 1. 수정 2. 삭제 3. 제목 옆에 댓글
+how to inactivate foreign key in oracle
+8교시
+숙제&자습

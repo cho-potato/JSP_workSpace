@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="News">
+	<resultMap id="newsMap" type="News">
+		<!-- Mybatis의 자동매핑을 사용하기 힘들 때는 개발자가 직접 매핑을 명시할 수 있다. 이 때 사용되는 태그가 1) resultMap -->
+		<!-- 2) Mybatis의 join 지원 -->
+		<!--  -->
+		 <!-- 어떤 칼럼에 어떤 자바 멤버변수를 넣을 거니 -->
+		<id column="news_idx"		property="news_idx"/> 	<!-- 프라이머리 키 매핑 -->
+		<result column="title" 		property="title"/>			<!-- 타이틀 매핑 -->
+		<result column="writer" 		property="writer"/>			<!-- writer 매핑 -->
+		<result column="content" 	property="content"/>
+		<result column="regdate" 	property="regdate"/>
+		<result column="hit" 			property="hit"/>
+		<!-- 일단 부모는 자식을 수집해야 하니까 collection -->
+		<!-- 내 주민번호(news_idx)를 근거로 News와 엮인 멤버변수(commentsList)에 담을건데 그거 자료형은 어떤 쿼리문으로 수집할건데  -->
+		<!--<collection column="news_idx" property="commentsList" javaType="java.util.List" ofType="Comments" select="select * from comments where news_idx=?"></collection> -->
+		<collection column="news_idx" property="commentsList" javaType="java.util.List" ofType="Comments" select="Comments.selectAllByFkey"/>
+
+	</resultMap>
+	
+ <!-- 글 한 건 등록 -->
+	<insert id="insert" parameterType="News">
+		insert into news(news_idx, title, writer, content)
+		values(seq_news.nextval, #{title}, #{writer}, #{content})
+	</insert>
+
+	<select id="selectAll" resultType="News">
+		select * from news order by news_idx desc
+	</select>
+	
+	<!-- <select id="select" resultType="News" parameterType="int"> -->
+	<select id="select" resultMap="newsMap" parameterType="int">
+		select * from news where news_idx=#{news_idx} <!-- 파라미터가 여러 개일 때는 구분이 안되니까 똑같이 해야하지만 이것처럼 한개일 때는 babo 라고 적어도 상관 없음 -->
+	</select>
+	
+	<update id="update">
+		update news set title=#{title}, writer=#{writer}, content=#{content} where news_idx=#{news_idx}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from news where news_idx=#{news_idx}
+	</delete>
+	
+</mapper>

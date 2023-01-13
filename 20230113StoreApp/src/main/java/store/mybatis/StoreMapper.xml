@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Store">
+	<resultMap id="storeMap" type="Store">
+		<id 		column="store_idx" 			property="store_idx"/>
+		<result	column="lati"					property="lati"/>
+		<result	column="longi"				property="longi"/>
+		<result	column="store_name"		property="store_name"/>
+		<!-- StoreDTO가 가진 부모의 자료형인 Category의 값을 채우기 즉, 1:1 조인 (association) -->
+		<!-- <association column="category_idx" javaType="Category" property="category_idx" select="select * from category where caregory_idx=#{}" /> -->
+		<association column="category_idx" javaType="Category" property="category" select="Category.select" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="Store">
+		insert into store(lati, longi, store_name, category_idx)
+		values(#{lati}, #{longi}, #{store_name}, #{category.category_idx})
+	</insert>
+	
+	<select id="selectAll" resultMap="storeMap">
+		select store_idx, lati, longi, store_name, category_idx from store
+	</select>
+	
+</mapper>

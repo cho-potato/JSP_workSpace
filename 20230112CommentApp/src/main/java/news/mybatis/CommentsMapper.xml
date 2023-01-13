@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Comments">
+
+	<!-- 하나의 뉴스 기사에 딸려있는 모든 코멘트 가져오기 -->
+
+	<select id="selectAllByFkey" resultType="Comments" parameterType="int">
+		select * from comments where news_idx=#{news_idx}
+	</select>
+	
+	<!-- 한 건 넣기(입력) -->
+	<insert id="insert" parameterType="Comments">
+		insert into comments(comments_idx, msg, author, news_idx)
+		values(seq_comments.nextval, #{msg}, #{author}, #{news.news_idx})
+	</insert>
+</mapper>
