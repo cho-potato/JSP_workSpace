@@ -6736,3 +6736,4 @@ org.eclipse.core.runtime.CoreException: Launch configuration FileManager referen
 2023-01-13 17:37:07,974 [Worker-20: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 2023-01-13 17:37:07,975 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\jsp_workspace\ReplyApp\src\main\resources
 2023-01-13 17:37:07,976 [Worker-20: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-01-13 17:37:07,976 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\jsp_workspace\ReplyApp\src\test\resources
