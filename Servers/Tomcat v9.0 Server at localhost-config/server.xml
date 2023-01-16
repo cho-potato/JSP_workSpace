@@ -28,8 +28,8 @@
 			<!-- 데이터 베이스의 연동 정보 등은 자바 코드에 작성하지 않고 외부 자원에 두어 관리하는 방법이 더 유지보수성이 높다. 
 			자바에서는 환경정보를 외부 파일에 두고, 자바 코드에서는 해당 자원의 이름을 통하여 정보에 접근하는 방법을 가리켜 JNDI(Java Naming Directory Interface)라고 한다
 			외부 자원에 이름을 붙여놓고 그 이름을 통해 자바에 접근하는 기술 -->
-		<Resource name="jdbc/oracle" auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="10" maxWait="3000" password="1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="jsp"/>
-		<Resource name="jdbc/mysql" auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="3000" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/jsp?characterEncoding=utf8" username="root"/>
+		<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="10" maxWait="3000" name="jdbc/oracle" password="1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="jsp"/>
+		<Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="3000" name="jdbc/mysql" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/jsp?characterEncoding=utf8" username="root"/>
 	</GlobalNamingResources>
 
 	<!-- A "Service" is a collection of one or more "Connectors" that share 
@@ -109,7 +109,7 @@
 
 				
 				
-			<Context docBase="20230112CommentApp" path="/CommentApp" reloadable="true" source="org.eclipse.jst.jee.server:20230112CommentApp"/><Context docBase="ReplyApp" path="/ReplyApp" reloadable="true" source="org.eclipse.jst.jee.server:ReplyApp"/><Context docBase="20230113StoreApp" path="/" reloadable="true" source="org.eclipse.jst.jee.server:20230113StoreApp"/></Host>
+			<Context docBase="20230116EmpApp" path="/" reloadable="true" source="org.eclipse.jst.jee.server:20230116EmpApp"/></Host>
 		</Engine>
 	</Service>
 </Server>

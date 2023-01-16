@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Emp">
+
+	<!-- 부모의 부서번호에 해당하는 사원만 가져오기 -->
+	  <select id="selectByFKey" parameterType="int" resultType="Emp">
+	  	select * from emp where deptno=#{deptno}
+	  </select>
+
+	<!-- 사원 검색 -->
+	<select id="selectBySearch" resultType="Emp" parameterType="java.util.Map">
+		select * from emp where ${category} like '%${keyword}%'
+	</select>
+</mapper>
+

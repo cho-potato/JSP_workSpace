@@ -2,6 +2,9 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="20230116EmpApp"/>
+			<item value="20230113StoreApp"/>
+			<item value="230113StoreApp"/>
 			<item value="ReplyApp"/>
 			<item value="20230112CommentApp"/>
 			<item value="YourbatisGallery"/>
@@ -12,6 +15,9 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="20230116EmpApp"/>
+			<item value="20230113StoreApp"/>
+			<item value="230113StoreApp"/>
 			<item value="ReplyApp"/>
 			<item value="20230112CommentApp"/>
 			<item value="YourbatisGallery"/>

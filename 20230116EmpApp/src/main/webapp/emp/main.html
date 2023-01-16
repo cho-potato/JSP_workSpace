@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+
+	function createDeptOption(deptList) {
+		// 화면에 반영하기, UI반영
+		let op = "<option value=0>부서선택</option>";
+		for (let i = 0; i < deptList.length; i++) {
+			let dept = deptList[i]; // 부서 제이슨 하나 꺼내기
+			op += "<option value='"+dept.deptno+"'>"+dept.dname+"</option>";
+		}
+		$("#deptno").html(op);
+	}
+	function getDeptList() {
+		$.ajax({
+			"type" : "get",
+			"url" : "/emp/dept_list.jsp",
+			success : function(result, status, xhr) {
+				// result : 서버의 응답 텍스트
+				// status : 서버의 응답 http 코드
+				// xhr : XMLHttpRequest 객체
+				// console.log("result is ", result);
+				let deptList = JSON.parse(result); // 문자열을 JSON 객체로
+				createDeptOption(deptList); // 부서 옵션 만들기
+			}
+		});
+	}
+	function createEmpTable(empList) {
+		let tag = "";
+		
+		for (let i = 0; i<empList.length; i++) {
+			let emp = empList[i]; // 사원 한 명 꺼내기
+			tag+="<tr>";
+			tag+="<td>"+emp.empno+"</td>"; // 부서번호
+			tag+="<td>"+emp.ename+"</td>"; // 
+			tag+="<td>"+emp.job+"</td>"; //
+			tag+="<td>"+emp.mgr+"</td>"; // 
+			tag+="<td>"+emp.hiredate.substring(0, 10)+"</td>"; // 
+			tag+="<td>"+emp.sal+"</td>"; // 
+			tag+="<td>"+emp.comm+"</td>"; // 
+			tag+="<td>"+emp.deptno+"</td>"; // 
+			tag+="</tr>";
+		}
+		$("#tbody").html(tag);
+	}
+	function getEmpList() {
+		let deptno = $("#deptno").val(); // 유저가 선택한 부서 번호
+		$.ajax({
+			"type" : "get",
+			"url" : "/emp/emp_list.jsp?deptno="+deptno,
+			success : function(result, status, xhr) {
+				console.log("서버의 사원 목록 ", result);
+				createEmpTable(JSON.parse(result));
+			}
+		})
+	}
+	// 검색 기능에 의한 사원들 가져오기
+	function getEmpListBySearch() {
+		let category=$("#category").val(); // select box 값
+		let keyword=$("#keyword").val(); // input 값
+		$.ajax({
+			type : "get",
+			url : "/emp/emp_search.jsp?category="+category+"&keyword="+keyword,
+			success : function(result, status, xhr) {
+				createEmpTable(JSON.parse(result));
+			}
+		})
+	}
+	$(function() {
+		getDeptList(); // 부서 불러오기
+		// 부서 중 하나를 선택하면
+		$("#deptno").change(function (){
+			getEmpList();
+		});
+		$("#bt_search").click(function() {
+			getEmpListBySearch();
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row mt -5">
+			<div class="col-md-3 border" > 
+				<div class="form-group mt-3">
+					<select class="form-control"  id="deptno"></select>
+				</div>
+			</div>
+			<div class="col-md-9 border">
+				<div class="row m-3">
+					<div class="col-md-3">
+						<div class="form-group m-3">
+							<select class="form-control"  id="category">
+								<option value="empno">사원번호</option>
+								<option value="ename">사원명</option>
+								<option value="job">업무</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="form-group m-3">
+							<input type="text" class="form-control" id="keyword">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group m-3">
+							<button type="button" class="btn btn-primary" id="bt_search">검색</button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<table class="table mt-2">
+						<thead class="thead-dark">
+						<tr>
+							<th>EMPNO</th>
+							<th>ENAME</th>
+							<th>JOB</th>
+							<th>MGR</th>
+							<th>HIREDATE</th>
+							<th>SAL</th>
+							<th>COMM</th>
+							<th>DEPTNO</th>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+					</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

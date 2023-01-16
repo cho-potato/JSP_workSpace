@@ -4,7 +4,6 @@
     <fullyQualifiedTypeName name="gallery.domain.gallery"/>
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
     <fullyQualifiedTypeName name="gallery.util.FileManager"/>
@@ -28,7 +27,6 @@
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="board.util.FileManager"/>
     <fullyQualifiedTypeName name="board.repository.BoardDAO"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="news.domain.News"/>
     <fullyQualifiedTypeName name="news.repository.NewsDAO"/>
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
@@ -39,12 +37,20 @@
     <fullyQualifiedTypeName name="news.repository.CommentsDAO"/>
     <fullyQualifiedTypeName name="news.util.ResponseMessage"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="reply.mybatis.ReplyMybatisConfig"/>
     <fullyQualifiedTypeName name="reply.domain.ReplyNews"/>
+    <fullyQualifiedTypeName name="store.mybatis.MybatisConfig"/>
+    <fullyQualifiedTypeName name="store.domain.Store"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="emp.domain.Emp"/>
+    <fullyQualifiedTypeName name="emp.mybatis.MybatisConfig"/>
+    <fullyQualifiedTypeName name="empapp.mybatis.MybatisConfig"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
 </qualifiedTypeNameHistroy>

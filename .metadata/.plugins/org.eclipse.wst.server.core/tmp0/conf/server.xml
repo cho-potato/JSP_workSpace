@@ -109,7 +109,7 @@
 
 				
 				
-			<Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\20230112CommentApp" path="/CommentApp" reloadable="true" source="org.eclipse.jst.jee.server:20230112CommentApp"/><Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ReplyApp" path="/ReplyApp" reloadable="true" source="org.eclipse.jst.jee.server:ReplyApp"/><Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\20230113StoreApp" path="" reloadable="true" source="org.eclipse.jst.jee.server:20230113StoreApp"/></Host>
+			<Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\20230116EmpApp" path="" reloadable="true" source="org.eclipse.jst.jee.server:20230116EmpApp"/></Host>
 		</Engine>
 	</Service>
 </Server>

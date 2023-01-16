@@ -1,3 +1,4 @@
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="java.io.IOException"%>
 <%@page import="gallery.domain.Gallery"%>
 <%@page import="gallery.util.FileManager"%>
