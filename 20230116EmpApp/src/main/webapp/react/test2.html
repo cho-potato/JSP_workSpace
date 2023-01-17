@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fontColor{
+            color : red;
+            font-size : 25pt;
+
+        }
+
+    </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        let rowList = []; // 빈 배열 선언
+        function showMsg(msg) {
+            alert(msg);
+        }
+
+        // props는 컴포넌트 호출 시 컴포넌트 안쪽에 전달하고든 파라미터 역할을 해준다
+        function Row(props) {
+            return (
+                <tr>
+                    <td><button onClick={() => showMsg(props.board.title)}>눌러봐</button></td>
+                    <td className="fontColor">{props.board.title}</td>
+                    <td><a href={"https://www.naver.com?writer="+props.board.writer}>{props.board.writer}</a></td>
+                    <td>{props.board.regdate}</td>
+                    <td>{props.board.hit}</td>
+                </tr>
+            );
+        }
+        // 서버에서 비동기로 JSON 배열을 가져왔다고 가정
+        let jsonList = [
+            {
+                "title": "감자깡",
+                "writer": "감자칼",
+                "regdate": "2023-01-17",
+                "hit": 5
+            },
+            {
+                "title": "감자깡깡",
+                "writer": "감자칼",
+                "regdate": "2023-01-18",
+                "hit": 55
+            },
+            {
+                "title": "감자깡깡깡",
+                "writer": "감자칼",
+                "regdate": "2023-01-19",
+                "hit": 555
+            }
+        ];
+
+        // 컴포넌트를 배열에 담자(Row컴포넌트 내부에서는 안되니까 바깥에서 한다)
+        // 바깥에서 넣기 위해 push를 쓴다
+        // 우리가 만든 것을 넣기 위해 태그표시 <>를 하고 push한다
+        for (let i = 0; i < jsonList.length; i++) {
+            let board = jsonList[i]; // 게시물 한 건 꺼내기
+            // rowList.push(<Row/>);
+            // rowList.push(<Row key={i}/>);
+            // rowList.push(<Row key={i} no={i} title={"오늘 줄넘기"+i+"번 했당"} writer={i+"꼬마"} regdate={"2023."+i+".01"} hit={i}/>);
+            rowList.push(<Row key={i} board={board} />);
+
+        }
+        let root = ReactDOM.createRoot(document.getElementById("container"));
+        // root.render(<Row/>);
+        root.render(rowList); // 컴포넌트에 인스턴스를 넣으려면 키 값을 써줘야 한다
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <td>No</td>
+                    <td>제목</td>
+                    <td class="fontColor">작성자</td>
+                    <td>등록일</td>
+                    <td>조회수</td>
+                </tr>
+            </thead>
+            <tbody id="container">
+
+            </tbody>
+
+        </table>
+    </div>
+</body>
+
+</html>

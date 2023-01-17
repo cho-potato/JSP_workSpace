@@ -109,7 +109,7 @@
 
 				
 				
-			<Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\20230116EmpApp" path="" reloadable="true" source="org.eclipse.jst.jee.server:20230116EmpApp"/></Host>
+			<Context docBase="C:\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\20230117NoticeReact" path="" reloadable="true" source="org.eclipse.jst.jee.server:20230117NoticeReact"/></Host>
 		</Engine>
 	</Service>
 </Server>

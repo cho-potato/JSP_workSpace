@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- babel : JSX(JavaScriptXML) : JS 코드 안에 html 태그 작성이 가능하도록 지원함 -->
+    <script type="text/babel">
+        // babel 내에 있으면 함수가 아니라 UI 컴포넌트로 정의한다고 표현한다
+        // UI 컴포넌트는 항상 재사용할 태그를 반환해야 한다 
+        // 개발자는, UI 컴포넌트를 정의하면 마치 사용자 정의 태그처럼 재사용이 가능하다
+        // 최상위 태그가 지정되어 있지 않으면 <> </>로도 가능하다
+        
+        function Hello () {
+            // <h1>복습 1</h1>
+            return <h1>복습 1</h1>
+        }
+        // ReactDOM.render(어떤 태그를, 어디에);
+        // ReactDOM.render(<Hi/>, document.getElementById("container"))
+        let root = ReactDOM.createRoot(document.getElementById("container"));
+        root.render();
+    </script>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- babel : JSX(JavaScript XML) : JS코드 안에 html 태그 작성이 가능하도록 지원함 -->
+    <script type="text/babel">
+        // babel 내에 있으면 함수가 아니라 UI 컴포넌트를 정의한다고 표현함
+        // UI 컴포넌트는 항상 재사용할 태그를 반환해야 한다  <h1>리액트 시작</h1> -> return <h1>리액트 시작</h1>
+        // 개발자는 UI 컴포넌트를 정의하면, 마치 사용자 정의 태그처럼 재사용이 가능하다
+        // 최상위 태그가 지정되어 있지 않으면 <> </>로도 가능하다
+        // return의 대상이 되는 태그는 항상 하나여야 함(반환되는 태그는 항상 싱글이어야 한다 : 루트가 있어야 함)
+        //두 줄 이상 되는 태그는 반드시 소괄호로 감싸야 한다
+        function Hi() {
+            return ( 
+            <div>
+             <h1>리액트 시작 {1+9}</h1>
+             <h2>리액트 시작</h2>
+            </div> 
+            );
+        }
+        // ReactDOM.render(어떤 태그를, 어디에); : React가 보유하고 있는 ReactDOM 중에서
+        // ReactDOM.render(<Hi/>, document.getElementById("container")); : 최신 버전에서는 더 이상 지원하지 않음
+        // createRoot() 방식으로 바뀜  -> ReactDOM.createRoot(); // 루트가 될 녀석
+        let root = ReactDOM.createRoot(document.getElementById("container"));
+        root.render(<Hi/>);
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        
+    </div>
+</body>
+
+</html>

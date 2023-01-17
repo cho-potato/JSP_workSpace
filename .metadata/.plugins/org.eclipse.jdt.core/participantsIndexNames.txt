@@ -27,6 +27,10 @@ C:\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\297369039
 \20230113StoreApp\src\main\java
 C:\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\823790493.index
 \GalleryProject\src\main\java
+C:\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1583820462.index
+\20230117ReactNotice\src\main\java
+C:\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\72623978.index
+\EmpApp\src\main\java
 C:\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2339768789.index
 \20230111MybatisGallery\src\main\java
 C:\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3148923717.index
@@ -59,3 +63,5 @@ C:\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\369235441
 \YourbatisGallery\src\main\java
 C:\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\739916970.index
 \230111MybatisGallery\src\main\java
+C:\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3977840428.index
+\20230117NoticeReact\src\main\java

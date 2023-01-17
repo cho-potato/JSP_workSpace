@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="20230117ReactNotice"/>
+			<item value="EmpApp"/>
 			<item value="20230116EmpApp"/>
 			<item value="20230113StoreApp"/>
 			<item value="230113StoreApp"/>
@@ -15,6 +17,8 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="20230117ReactNotice"/>
+			<item value="EmpApp"/>
 			<item value="20230116EmpApp"/>
 			<item value="20230113StoreApp"/>
 			<item value="230113StoreApp"/>
