@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Admin">
+
+	<!-- 관리자 한 명 가져오기 (id, pass) -->
+	<select id="select" parameterType="Admin" resultType="Admin">
+		select * from admin where admin_id=#{admin_id} and admin_pass=#{admin_pass}
+	</select>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Notice">
+	<select id="selectAll" resultType="Notice">
+		select * from notice order by notice_idx desc	
+	</select>
+	
+	<!-- 
+		${동적 컬럼명이 들어갈 수 있는 선언 기법}
+		#{JDBC의 바인드 변수 대체 = 값이 들어감} : 컬럼명으로 사용할 수 없음
+	
+		크다 작다(> <)는 
+		<![CDATA[
+		select * from notice where notice_idx >3
+		]]>
+		이렇게 하면 내부에 있는 꺽새를 연산자로 생각함(CDATA) XML문법
+	 -->
+	
+	
+	<select id="select" parameterType="int" resultType="Notice">
+		select * from notice where notice_idx=#{notice_idx}
+	</select>
+	
+	
+	<insert id="insert" parameterType="Notice">
+		insert into notice(notice_idx, title, writer, content)
+		values(seq_notice.nextval, #{title}, #{writer}, #{content})
+	</insert>
+	
+	<update id="update" parameterType="Notice">
+		update notice set title=#{title}, writer=#{writer}, content=#{content} where notice_idx=#{notice_idx}
+	</update>
+	
+	<delete id="delete">
+		delete from notice where notice_idx=#{notice_idx}
+	</delete>
+
+</mapper>

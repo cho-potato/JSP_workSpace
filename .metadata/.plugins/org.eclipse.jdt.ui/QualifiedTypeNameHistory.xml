@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.edu.noticeapp.repository.NoticeDAO"/>
     <fullyQualifiedTypeName name="gallery.domain.gallery"/>
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
@@ -44,7 +43,6 @@
     <fullyQualifiedTypeName name="reply.domain.ReplyNews"/>
     <fullyQualifiedTypeName name="store.mybatis.MybatisConfig"/>
     <fullyQualifiedTypeName name="store.domain.Store"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="emp.domain.Emp"/>
     <fullyQualifiedTypeName name="emp.mybatis.MybatisConfig"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
@@ -53,8 +51,13 @@
     <fullyQualifiedTypeName name="reactnotice.domain.ReactNotice"/>
     <fullyQualifiedTypeName name="empapp.mybatis.Mybatisconfig"/>
     <fullyQualifiedTypeName name="empapp.mybatis.MybatisConfig"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="reactNotice.mybatis.MybatisConfigReact"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="notice.domain.Notice"/>
+    <fullyQualifiedTypeName name="notice.mybatis.MybatisConfig"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
+    <fullyQualifiedTypeName name="com.jspshop.domain.Admin"/>
+    <fullyQualifiedTypeName name="com.jspshop.mybatis.MybatisConfig"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
 </qualifiedTypeNameHistroy>
