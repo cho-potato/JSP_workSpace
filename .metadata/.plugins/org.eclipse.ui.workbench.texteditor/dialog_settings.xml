@@ -12,13 +12,15 @@
 		<item key="DIALOG_Y_ORIGIN" value="396"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="General Form"/>
+		<item key="selection" value="Option"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="option"/>
+			<item value="previewImg"/>
 			<item value="general form"/>
 			<item value="dash"/>
 			<item value="main side"/>
@@ -35,7 +37,7 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1200"/>
+		<item key="DIALOG_X_ORIGIN" value="646"/>
 		<item key="DIALOG_Y_ORIGIN" value="188"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>

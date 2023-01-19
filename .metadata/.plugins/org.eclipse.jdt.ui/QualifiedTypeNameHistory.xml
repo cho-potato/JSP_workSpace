@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="gallery.domain.gallery"/>
-    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
-    <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
-    <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
-    <fullyQualifiedTypeName name="gallery.util.FileManager"/>
-    <fullyQualifiedTypeName name="org.apache.catalina.connector.Response"/>
-    <fullyQualifiedTypeName name="gallery.repository.GalleryDAO"/>
-    <fullyQualifiedTypeName name="gallery.domain.Gallery"/>
-    <fullyQualifiedTypeName name="gallery.pool.PoolManager"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
@@ -52,12 +42,22 @@
     <fullyQualifiedTypeName name="empapp.mybatis.Mybatisconfig"/>
     <fullyQualifiedTypeName name="empapp.mybatis.MybatisConfig"/>
     <fullyQualifiedTypeName name="reactNotice.mybatis.MybatisConfigReact"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="notice.domain.Notice"/>
     <fullyQualifiedTypeName name="notice.mybatis.MybatisConfig"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
     <fullyQualifiedTypeName name="com.jspshop.domain.Admin"/>
-    <fullyQualifiedTypeName name="com.jspshop.mybatis.MybatisConfig"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="com.jspshop.mybatis.MybatisConfig"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.jspshop.domain.Category"/>
+    <fullyQualifiedTypeName name="com.jspshop.domain.Color"/>
+    <fullyQualifiedTypeName name="com.jspshop.domain.Product"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="com.jspshop.repository.PsizeDAO"/>
+    <fullyQualifiedTypeName name="com.jspshop.domain.Psize"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="com.jspshop.exception.ProductException"/>
+    <fullyQualifiedTypeName name="com.jspshop.exception.PsizeException"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.cache.CacheException"/>
+    <fullyQualifiedTypeName name="com.jspshop.exception.ColorException"/>
 </qualifiedTypeNameHistroy>

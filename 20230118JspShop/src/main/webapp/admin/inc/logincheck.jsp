@@ -7,10 +7,14 @@
 
 // 현재 요청을 시도한 클라이언트와 연계된 세션(명시하지 않아도 자동으로 됨)
 Admin admin = (Admin)session.getAttribute("admin");
+
+/*
+out.print("<script>");
 if(admin == null) {
-	out.print("there is no session");
-} else{
-	out.print("found session ");
-}
+	out.print("alert('로그인이 필요한 서비스 입니다');");
+	out.print("history.back();");
+} 
+	out.print("</script>");
+*/
 
 %>

@@ -5,6 +5,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.jspshop.domain.Admin" alias="Admin"/>
+		<typeAlias type="com.jspshop.domain.Category" alias="Category"/>
+		<typeAlias type="com.jspshop.domain.Product" alias="Product"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -17,5 +19,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/jspshop/mybatis/AdminMapper.xml" />
+		<mapper resource="com/jspshop/mybatis/CategoryMapper.xml" />
+		<mapper resource="com/jspshop/mybatis/ProductMapper.xml" />
 	</mappers>
 </configuration>
