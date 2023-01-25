@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pimg">
+	
+	<insert id="insert" parameterType="Pimg">
+		insert into pimg(product_idx, filename)
+		values(#{product.product_idx}, #{filename})
+	</insert>
+	
+	<!-- 부모가 자식을 가져가기 위한 collection용 -->
+	<select id="selectByProduct" resultType="Pimg" parameterType="int">
+		select * from pimg where product_idx=#{product_idx}
+	</select>
+</mapper>

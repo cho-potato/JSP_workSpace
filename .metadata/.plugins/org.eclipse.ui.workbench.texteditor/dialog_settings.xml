@@ -12,13 +12,17 @@
 		<item key="DIALOG_Y_ORIGIN" value="396"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Option"/>
+		<item key="selection" value="add"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="add"/>
+			<item value="heart"/>
+			<item value="search"/>
+			<item value="insta"/>
 			<item value="option"/>
 			<item value="previewImg"/>
 			<item value="general form"/>
@@ -30,7 +34,6 @@
 			<item value="alex"/>
 			<item value="wrapper"/>
 			<item value="notice2"/>
-			<item value="react"/>
 		</list>
 		<list key="replacehistory">
 			<item value="notice"/>

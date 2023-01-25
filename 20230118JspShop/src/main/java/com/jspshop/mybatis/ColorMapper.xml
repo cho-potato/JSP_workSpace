@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Color">
+	
+	<insert id="insert" parameterType="Color">
+		insert into color(product_idx, color_name)
+		values(#{product.product_idx}, #{color_name})
+	</insert>
+	
+	<select id="selectByProduct" resultType="Color" parameterType="int">
+		select * from color 
+		where product_idx=#{product_idx}
+	</select>
+</mapper>

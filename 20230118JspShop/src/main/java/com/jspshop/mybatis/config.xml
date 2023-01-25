@@ -4,22 +4,29 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.jspshop.domain.Admin" alias="Admin"/>
-		<typeAlias type="com.jspshop.domain.Category" alias="Category"/>
-		<typeAlias type="com.jspshop.domain.Product" alias="Product"/>
+		<typeAlias type="com.jspshop.domain.Admin" 			alias="Admin"/>	
+		<typeAlias type="com.jspshop.domain.Category" 		alias="Category"/>	
+		<typeAlias type="com.jspshop.domain.Product" 			alias="Product"/>	
+		<typeAlias type="com.jspshop.domain.Color" 			alias="Color"/>	
+		<typeAlias type="com.jspshop.domain.Psize" 			alias="Psize"/>	
+		<typeAlias type="com.jspshop.domain.Pimg" 				alias="Pimg"/>	
 	</typeAliases>
+	
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="JNDI">
-				<property name="data_source"
-					value="java:comp/env/jdbc/mysql" />
+				<!-- 컨테이너에서 지원하는 커넥션풀을 jndi로 사용 -->
+				<property name="data_source" value="java:comp/env/jdbc/mysql" />
 			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/jspshop/mybatis/AdminMapper.xml" />
-		<mapper resource="com/jspshop/mybatis/CategoryMapper.xml" />
-		<mapper resource="com/jspshop/mybatis/ProductMapper.xml" />
+		<mapper resource="com/jspshop/mybatis/AdminMapper.xml"/>
+		<mapper resource="com/jspshop/mybatis/CategoryMapper.xml"/>
+		<mapper resource="com/jspshop/mybatis/ProductMapper.xml"/>
+		<mapper resource="com/jspshop/mybatis/ColorMapper.xml"/>
+		<mapper resource="com/jspshop/mybatis/PsizeMapper.xml"/>
+		<mapper resource="com/jspshop/mybatis/PimgMapper.xml"/>
 	</mappers>
 </configuration>

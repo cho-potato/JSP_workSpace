@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="member.repository.MemberDAO"/>
@@ -46,12 +45,9 @@
     <fullyQualifiedTypeName name="notice.mybatis.MybatisConfig"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
     <fullyQualifiedTypeName name="com.jspshop.domain.Admin"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="com.jspshop.mybatis.MybatisConfig"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.jspshop.domain.Category"/>
     <fullyQualifiedTypeName name="com.jspshop.domain.Color"/>
-    <fullyQualifiedTypeName name="com.jspshop.domain.Product"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="com.jspshop.repository.PsizeDAO"/>
     <fullyQualifiedTypeName name="com.jspshop.domain.Psize"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="com.jspshop.exception.PsizeException"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.cache.CacheException"/>
     <fullyQualifiedTypeName name="com.jspshop.exception.ColorException"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.jspshop.domain.Product"/>
+    <fullyQualifiedTypeName name="com.jspshop.domain.Member"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
 </qualifiedTypeNameHistroy>

@@ -5,6 +5,11 @@
 	<select id="selectAll" resultType="Category">
 		select * from category order by category_idx asc
 	</select>
-
-
+	
+	<!-- 상품매퍼에서 가져가게 하기 위한 쿼리 -->	
+	<select id="selectByProduct" resultType="Category" parameterType="int">
+		select * from category 
+		where category_idx=#{category_idx}
+	</select>
+	
 </mapper>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- BootStrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<script>
+    // 1) 렌더링 영역과 Vue 인스턴스 데이터를 연결하는 바인드 사용하기 (Class and Style Bindings)
+    function init() {
+        // 2) 제이슨으로 연관성을 줘야 함
+        let app1 = new Vue({
+            el : "#app1",
+            // 3) 바인딩 할 데이터 명시
+            data : {
+                inputValue : "grape",
+                compoType : "text",
+                link : "https://naver.com",
+                count : 0
+
+            },
+            methods : {
+                setText : function(event) {
+                    // 7)  console.log(even);
+                    console.log(event.target.value); // 8) 
+                    // 7)  this.inputValue="우아아아아앋ㄱ";
+                    this.inputValue=event.target.value; // 8) 
+                },
+                showAlert : function(msg) { //  11)
+                    // alert("안녕");
+                    alert(msg);
+                },
+                setCount : function() { // 12)
+                    this.count++
+                }
+            }
+        }); 
+    }
+    $(function () {
+        init();
+    });
+</script>
+
+<body>
+    <!-- 이 영역은 Vue를 이용하여 렌더링 할 대상이 됨(렌더링 대상 : 화면에 표현할 대상) -->
+    <!-- 여기는 거울 -->
+    <div id="app1">
+        <!-- 4) <input type="text" value="banana"> 여기에 바인딩 할거임--> 
+        <!-- 5) <input v-bind : type="compoType" v-bind : value="inputValue"> v-bind를 단순하게 할거임-->
+        <!-- 6) <input :type="compoType" :value="inputValue"> 여기에 이벤트(v-on)-->
+        {{inputValue}}
+        <!-- 7) <input :type="compoType" :value="inputValue" v-on:keyup="setText()"> 여기에 이벤트-->
+        <!-- 8) <input :type="compoType" :value="inputValue" v-on:keyup="setText"> 엔터키 써보기(매개변수가 없을 때는 소괄호 주지말자) -->
+        <input :type="compoType" :value="inputValue" v-on:keyup.enter="setText">
+
+        <a :href="link">네이버 바로가기</a><!-- 09) -->
+        <br>
+        <!-- <button v-on:click="showAlert">경고 메세지</button> 10) -->
+        <button v-on:click="showAlert('경고합니다')">경고 메세지</button> <!-- 11) -->
+         <br>
+         <button v-on:click="setCount">카운트 증가</button> <!-- 12) -->
+         <p>{{count}}</p><!-- 12) -->
+    </div>
+</body>
+
+</html>
