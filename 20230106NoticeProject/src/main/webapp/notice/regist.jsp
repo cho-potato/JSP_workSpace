@@ -17,18 +17,18 @@
 	int result = noticeDAO.insert(notice);
 	out.print(result);
 	// 목록 페이지 나오게
-if(result > 0) {
-%>
-<script>
-alert("등록ㅇㅇ");
-location.href="/notice/list.jsp";
-</script>
-<%}else{%>
-<script>
-alert("등록ㅅㅍ");
-history.back(); // 방문한 페이지의 기록 : history
-</script>
-<%}%>
+	if(result > 0) {
+	%>
+		<script>
+			alert("등록ㅇㅇ");
+			location.href="/notice/list.jsp";
+		</script>
+	<%}else{%>
+		<script>
+			alert("등록ㅅㅍ");
+			history.back(); // 방문한 페이지의 기록 : history
+		</script>
+	<%}%>
 // 따라서 여기서 DAO를 선언하면 요청 수만큼 생성됨 -> 선언부에서 선언
 
 // 클라이언트로부터 폼의 파라미터들을 넘겨받아 오라클에 넣기

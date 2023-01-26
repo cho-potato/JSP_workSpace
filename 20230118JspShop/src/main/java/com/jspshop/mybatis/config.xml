@@ -4,12 +4,13 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.jspshop.domain.Admin" 			alias="Admin"/>	
-		<typeAlias type="com.jspshop.domain.Category" 		alias="Category"/>	
-		<typeAlias type="com.jspshop.domain.Product" 			alias="Product"/>	
-		<typeAlias type="com.jspshop.domain.Color" 			alias="Color"/>	
-		<typeAlias type="com.jspshop.domain.Psize" 			alias="Psize"/>	
-		<typeAlias type="com.jspshop.domain.Pimg" 				alias="Pimg"/>	
+		<typeAlias type="com.jspshop.domain.Admin" 				alias="Admin"/>	
+		<typeAlias type="com.jspshop.domain.Category" 			alias="Category"/>	
+		<typeAlias type="com.jspshop.domain.Product" 				alias="Product"/>	
+		<typeAlias type="com.jspshop.domain.Color" 				alias="Color"/>	
+		<typeAlias type="com.jspshop.domain.Psize" 				alias="Psize"/>	
+		<typeAlias type="com.jspshop.domain.Pimg" 					alias="Pimg"/>	
+		<typeAlias type="com.jspshop.domain.Member" 				alias="Member"/>	
 	</typeAliases>
 	
 	<environments default="development">
@@ -28,5 +29,6 @@
 		<mapper resource="com/jspshop/mybatis/ColorMapper.xml"/>
 		<mapper resource="com/jspshop/mybatis/PsizeMapper.xml"/>
 		<mapper resource="com/jspshop/mybatis/PimgMapper.xml"/>
+		<mapper resource="com/jspshop/mybatis/MemberMapper.xml"/>
 	</mappers>
 </configuration>
