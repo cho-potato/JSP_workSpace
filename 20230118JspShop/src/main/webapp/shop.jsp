@@ -7,23 +7,22 @@
 <%@page import="com.jspshop.repository.CategoryDAO"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%!
-	MybatisConfig mybatisConfig = MybatisConfig.getInstance();
-	
+	MybatisConfig mybatisConfig =MybatisConfig.getInstance();
 	ProductDAO productDAO = new ProductDAO();
-
 %>
 <%
-	// 상품 DAO는 트랜잭션 때문에 SqlSession을 멤버변수로 두고, setter로 주입받기를 기다리고 있으므로(세션주입)
+	//상품 DAO는 트랜잭션 때문에, SqlSession을 멤버변수로 두고,  setter로 
+	//주입받기를 기다리고 있으므로... (세션 주입)
 	SqlSession sqlSession = mybatisConfig.getSqlSession();
 	productDAO.setSqlSession(sqlSession);
 
-	// 사용자가 넘긴 상위 카테고리를 이용하여 소속된 상품 가져오기 (select * from product where category_idx = 기본값)
-	String category_idx = request.getParameter("category_idx");
-	if(category_idx==null) {
+	//사용자가 넘긴 상위 카테고리를 이용하여, 소속된 상품 가져오기 
+	String category_idx=request.getParameter("category_idx");
+	if(category_idx==null){
 		category_idx="0";
 	}
+	List<Product> productList=productDAO.selectByCategory(Integer.parseInt(category_idx));
 	
-	List<Product> productList = productDAO.selectByCategory(Integer.parseInt(category_idx));
 	
 %>
 <!DOCTYPE html>
@@ -39,9 +38,10 @@
     <!-- Offcanvas Menu Begin -->
     <!-- 
     	jsp자체에서 지원하는 태그 
-    	사실 jsp는 디자인 영역이므로 개발자만 사용하는 것이 아니라 퍼블리셔, 웹디자이너와 공유를 한다
-    	이 때, java에 대한 비전문가들은 java 코드를 이해할 수 없기 때문에
-    	그들이 좀 더 쉽게 다가갈 수 있도록 태그를 지원해준다(협업때문에)
+     	왜 써야 하나? 사실 jsp는 디자인 영역이므로, 개발자만 사용하는 것이
+     	아니라 퍼블리셔, 웹디자이너와 공유를 한다..이때  java 에 대한 
+     	非전문가들은 java 코드를 이해할 수 없기 때문에, 그들이 좀더 쉽게
+     	다가갈 수 있도록 태그를 지원해준다 ( 협업 때문에 )
      -->
 	<%@ include file="/inc/main_navi.jsp"%>    
     <!-- Offcanvas Menu End -->
@@ -80,7 +80,7 @@
                                     <%Category category=categoryList.get(i); %>
                                     <div class="card">
                                         <div class="card-heading active">
-                                            <a onClick="getProductList(<%=category.getCategory_idx()%>)" data-target="#collapse<%=i%>"><%=category.getCategory_name() %></a>
+                                            <a onClick="getProductList(<%=category.getCategory_idx() %>)"  data-target="#collapse<%=i%>"><%=category.getCategory_name() %></a>
                                         </div>
                                         <div id="collapse<%=i%>" class="collapse hide" data-parent="#accordionExample">
                                             <div class="card-body">
@@ -220,11 +220,11 @@
                             <div class="product__item">
                             <%
                             	String filename=null;
-                            	if (product.getPimgList().size() > 0) {
+                            	if(product.getPimgList().size() >0){
                             		filename = product.getPimgList().get(0).getFilename();
-		                    	} else {
-		                    		out.print("파일없음,,,");
-		                    	}
+                            	}else{
+                            		out.print("파일 없슴요..");
+                            	}
                             %>
                                 <div class="product__item__pic set-bg" data-setbg="/data/<%=filename%>">
                                     <div class="label new">New</div>
@@ -280,29 +280,32 @@
 <!-- Js Plugins -->
 <%@ include file="/inc/footer_link.jsp" %>
 <script type="text/javascript">
-	function addCart(product_idx) {
-		// 비동기로 서버에 장바구니 담기 요청을 시도하자	
+
+function addCart(product_idx){
+	<%if(session.getAttribute("member")==null){%>
+		alert("로그인이 필요한 서비스입니다");
+	<%}else{ //로그인 한 경우 %>
+		//비동기 요청으로 서버에 장바구니 담기 요청을 시도하자!
 		$.ajax({
-			url : "/payment/cart.jsp?product_idx="+product_idx,
-			type : "GET",
-			success : function(result, status, xhr) {
+			url:"/payment/cart.jsp?product_idx="+product_idx,
+			type:"GET",
+			success:function(result, stauts, xhr){
 				alert(result);
 			}
 		});
-		
-	}
-	// 카테고리 선택시 하위 상품 요청하기
-	function getProductList(category_idx) {
-		
-		$(location).attr("href", "/shop.jsp?category_idx="+category_idx);
-	}
-	$(function() {
-		
-	});
+	<%}%>
+}
 
+//카테고리 선택시 하위 상품 요청하기
+function getProductList(category_idx){
+	$(location).attr("href", "/shop.jsp?category_idx="+category_idx);	
+}
+
+$(function(){
+	
+});
 </script>
 </body>
-
 </html>
 <%
 	mybatisConfig.release(sqlSession);

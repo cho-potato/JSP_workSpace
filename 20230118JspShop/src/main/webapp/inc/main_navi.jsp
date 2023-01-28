@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"%>
-
+<%@ page contentType="text/html;charset=UTF-8"%>
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__close">+</div>
@@ -13,7 +12,7 @@
             </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+            <a href="./index.html"><img src="/img/logo.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">

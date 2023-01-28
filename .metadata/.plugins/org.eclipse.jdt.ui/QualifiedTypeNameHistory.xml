@@ -57,7 +57,7 @@
     <fullyQualifiedTypeName name="com.jspshop.domain.Product"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="com.jspshop.mybatis.MybatisConfig"/>
-    <fullyQualifiedTypeName name="com.jspshop.domain.Member"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="com.jspshop.domain.Member"/>
 </qualifiedTypeNameHistroy>

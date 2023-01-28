@@ -22,52 +22,52 @@
 		<result 	column="price" 				property="price"/>
 		<result 	column="discount" 			property="discount"/>
 		<result 	column="detail" 				property="detail"/>
+		
 		<association  
 			column="category_idx" 
 			property="category"
 			javaType="Category"
 			select="Category.selectByProduct"/>
-			
-			<!-- 하나의 상품이 거느린 자식 데이터(색상, 사이즈, 이미지) 가져오기 -->
-			<!-- 서로 호출하여 자기참조를 하게 되면 무한루프 돌게 됨 -->
-			<collection column="product_idx" 
+		
+		<!-- 하나의 상품이 거느린 자식 데이터 가져오기  color, psize, pimg -->
+		<collection column="product_idx" 
 			property="pimgList"
 			javaType="java.util.List"
 			ofType="Pimg"
-			select = "Pimg.selectByProduct"
-			/>
-			<collection column="product_idx" 
+			select="Pimg.selectByProduct"/>
+							
+		<collection column="product_idx" 
 			property="colorList"
 			javaType="java.util.List"
 			ofType="Color"
-			select = "Color.selectByProduct"
-			/>
+			select="Color.selectByProduct"/>			
+ 				
 			
 	</resultMap>
 	
-	<!-- 검색 기능 -->
+	<!-- 모든 상품 가져오기 -->
 	<select id="selectBySearch" resultMap="productMap" 
 		parameterType="java.util.Map">
 		select * from product
-		where ${category} like '%${keyword}%'  
+		where ${category}  like '%${keyword}%'  
 	</select>	
 	
-	<!-- 모든 상품 가져오기 -->
 	<select id="selectAll" resultMap="productMap">
 		select * from product
 	</select>	
-
-	<!-- 상위 카테고리에 소속된 상품 가져오기 -->
-	<select id="selectByCategory" resultMap="productMap" parameterType="int">
-		select * from product where category_idx=#{category_idx}
+	
+	
+	<!-- 상위 카테고리에 소속된 상품 모두 가져오기 -->
+	<select id="selectByCategory" 
+		resultMap="productMap" parameterType="int">
+		select * from product  
+		where category_idx=#{category_idx}
 	</select>
-
+	
+	<!-- 상품 한건 가져오기  -->
+	<select id="select" parameterType="int" resultMap="productMap">
+		select * from product 
+		where product_idx=#{product_idx}
+	</select>
+	
 </mapper>
-
-
-
-
-
-
-
-

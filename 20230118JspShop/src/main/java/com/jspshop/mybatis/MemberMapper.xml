@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Member">
-
-	<select id="select" parameterType="int" resultType="Member">
-		select * from member where member_idx=#{member_idx}
-	</select>
-	
-	<select id="selectAll" resultType="Member">
-		select * frrom member order by member_idx asc
-	</select>
 	
 	<insert id="insert" parameterType="Member">
-		insert into member(id, pass, name, email)
-		values(#{id}, #{pass}, #{name}, #{email})	
+		insert into member(id, pass, name, email) 
+		values(#{id}, #{pass}, #{name}, #{email})
 	</insert>
 	
+	<select id="selectAll" resultType="Member">
+		select * from member order by member_idx asc
+	</select>
+	
+	
+	<select id="select" 
+		parameterType="Member" 
+		resultType="Member">
+		select * from member
+		where id=#{id} and pass=#{pass}
+	</select>
+	
 	<update id="update" parameterType="Member">
-		update member set id=#{id}, name=#{name}, email=#{email}
-		where member_idx = #{member_idx}		
+		update member set id=#{id}, pass=#{pass}, 
+		name= #{name}, email={email}
+		where member_idx=#{member_idx}		
 	</update>
 	
-	<delete id="delete">
-		delete from member where member_idx=#{member_idx}
+	<delete id="delete" parameterType="int">
+		delete from member 
+		where member_idx=#{member_idx}		
 	</delete>
-
+	
 </mapper>

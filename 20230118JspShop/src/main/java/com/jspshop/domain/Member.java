@@ -9,7 +9,8 @@ public class Member {
 	private String pass;
 	private String name;
 	private String email;
-	private String addr1;
-	private String addr2;
-
+	private String addr1; // 기본주소
+	private String addr2; // 상세주소
+	private String regdate;
+	
 }
