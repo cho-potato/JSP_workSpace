@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="20230130MVCApp"/>
 			<item value="20230118JspShop"/>
 			<item value="MemberApp"/>
 			<item value="20230117ReactNotice"/>
@@ -19,6 +20,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="20230130MVCApp"/>
 			<item value="20230118JspShop"/>
 			<item value="MemberApp"/>
 			<item value="20230117ReactNotice"/>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>20230130MVCApp</display-name>
+
+	<!-- 앞으로 MVC 프레임 워크에서는 모든 요청을 받는 제 1차 서블릿은 오직 1개만 둘 예정 -->
+	<!-- 따라서, URL패턴도 모든 요청을 다 포함할 수 있는 표현식으로 처리하자 -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>mvc.controller.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+<!-- <url-pattern>*(앞에 뭐가 올지 모르니까).내가만든확장자</url-pattern> -->
+<!-- <url-pattern>*.babo 같은거 됨</url-pattern> -->
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>

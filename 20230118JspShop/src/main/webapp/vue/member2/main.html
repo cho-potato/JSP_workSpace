@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+let app1;
+
+function regist(){
+	//폼을 전송하자(post)
+	$.ajax({
+		url : "/vue/member2/regist.jsp",
+		type:"post",
+		data:$("#form1").serialize(), //쿼리스트링화
+		contentType:"application/x-www-form-urlencoded;charset=utf-8",
+		success:function(result, status, xhr){
+			//console.log(result);//서버가 보낸 내용 확인
+			getMemberList();
+		}
+	});
+}
+
+//목록 가져오기!
+function getMemberList(){
+	$.ajax({
+		url:"/vue/member2/list.jsp",
+		type:"get",
+		success:function(result, status, xhr){
+			//console.log(result);
+			app1.memberList=result;
+		}
+	});
+}
+
+function getMember(member){
+	//우측 상세보기 영역 채우기
+	$("#form2 input[name='member_idx']").val(member.m_idx);	
+	
+	$("#form2 input[name='id']").val(member.m_id);	
+	$("#form2 input[name='pass']").val(member.m_pass);	
+	$("#form2 input[name='name']").val(member.m_name);	
+	$("#form2 input[name='email']").val(member.m_email);	
+}
+
+function del(){
+	let member_idx=$("#form2 input[name='member_idx']").val();
+	$.ajax({
+		url:"/vue/member2/delete.jsp?member_idx="+member_idx,
+		type:"get",
+		success:function(result, status, xhr){
+			console.log(result);
+			//다시 목록 갱신
+			getMemberList();
+		}
+		
+		
+	});
+}
+
+
+//렌더링할 재사용 가능한 ui code
+const Row={
+	template:`
+		<tr>
+	        <td><a href="#" @click="getDetail(member)">{{member.m_id}}</a></td>
+	        <td>{{member.m_pass}}</td>
+	        <td>{{member.m_name}}</td>
+	        <td>{{member.m_email}}</td>
+      	</tr>
+	`,
+	//외부에서 전달되는 속성값을 받기 위한 용도(파라미터 받기)
+	//<row>태그에 의해 인스턴스 생성시 전달되는 속성을 받을 수 있다.
+	props:['member_idx', 'id', 'pass', 'name', 'email'],
+	data(){
+		//인스턴스마다 따로따로 가지기 때문에 return해준다
+		return {
+			member:{
+			m_idx:this.member_idx,
+			m_id:this.id,//props는 this로 접근 가능
+			m_pass:this.pass,
+			m_name:this.name,
+			m_email:this.email	
+			}
+		};
+	},
+	methods:{
+		getDetail:function(member){
+			getMember(member);//회원한명 출력하기
+		}
+	},
+	//생명주기 메서드들의 동작방식 및 시점 알아보기
+	//화면에 DOM이 나타나기 이전 시점임.
+	beforeCreate:function(){
+		console.log("beforeCreate called!");
+	},
+	created:function(){
+		console.log("created called!");
+	},
+	beforeMount:function(){
+		console.log("beforeMount called!");
+	}, 
+	mounted:function(){
+		console.log("mounted called!");
+	},
+	beforeUpdate:function(){
+		//데이터가 변경될 때 이 메서드 호출됨, but 변경된 데이터가 화면에 반영되지는 않음.
+		console.log("beforeUpdate called!");
+	},
+	updated:function(){
+		//데이터가 변경될 때 이 메서드 호출됨, but 변경된 데이터가 화면에 반영되지는 않음.
+		console.log("updated called!");
+	},
+	beforeDestroy:function(){
+		//데이터가 변경될 때 이 메서드 호출됨, but 변경된 데이터가 화면에 반영되지는 않음.
+		console.log("beforeDestroy called!");
+	},
+	destroyed:function(){
+		//데이터가 변경될 때 이 메서드 호출됨, but 변경된 데이터가 화면에 반영되지는 않음.
+		console.log("destroyed called!");
+	}
+
+};
+
+
+function init(){
+	app1=new Vue({//뷰 인스턴스 생성
+		el : "#app1",
+		components:{//Row를 사용하기 위해서 등록
+			"row":Row
+		},
+		data:{
+			//count:3//app1요소들이 접근가능
+			memberList:[]
+		},
+		//사용자정의 메서드가 오는 것
+		methods:{
+		}
+		
+	});
+}
+
+$(function(){
+	init();
+	
+	getMemberList();
+	
+	$("#bt_regist").click(function(){
+		regist();
+	});
+	
+	$("#bt_del").click(function(){
+		del();
+	});
+});
+</script>
+</head>
+<body>
+	<div class="container" id="app1">
+		<div class="row m-3">
+			<div class="col-md-3 border">
+				<form id="form1">
+					<div class="form-group">
+					    <input type="text" class="form-control" placeholder="Enter ID" name="id">
+				  	</div>
+					<div class="form-group">
+					    <input type="text" class="form-control" placeholder="Enter PASS" name="pass">
+				  	</div>
+					<div class="form-group">
+					    <input type="text" class="form-control" placeholder="Enter NAME" name="name">
+				  	</div>
+					<div class="form-group">
+					    <input type="text" class="form-control" placeholder="Enter EMAIL" name="email">
+				  	</div>
+					<div class="form-group text-center">
+					    <button type="button" class="btn btn-primary" id="bt_regist">등록</button>
+				  	</div>
+				</form> 	
+			</div>
+			<div class="col-md-6 border">
+				<table class="table">
+				    <thead class="thead-dark">
+				      <tr>
+				        <th>ID</th>
+				        <th>PASS</th>
+				        <th>NAME</th>
+				        <th>EMAIL</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    	<template v-for="(member, index) in memberList">
+				     		<row 
+				     		:key="member['member_idx']"
+				     		:member_idx="member['member_idx']"
+				     		:id="member['id']"
+				     		:pass="member['pass']"
+				     		:name="member['name']"
+				     		:email="member['email']"
+				     		 />
+				    	</template>
+				    </tbody>
+				  </table>
+			</div>
+			<div class="col-md-3 border">
+				<form id="form2">
+					<input type="hidden" name="member_idx">
+
+					<div class="form-group">
+					    <input type="text" class="form-control" placeholder="Enter ID" name="id">
+				  	</div>
+					<div class="form-group">
+					    <input type="text" class="form-control" placeholder="Enter PASS" name="pass">
+				  	</div>
+					<div class="form-group">
+					    <input type="text" class="form-control" placeholder="Enter NAME" name="name">
+				  	</div>
+					<div class="form-group">
+					    <input type="text" class="form-control" placeholder="Enter EMAIL" name="email">
+				  	</div>
+					<div class="form-group text-center">
+					    <button type="button" class="btn btn-primary" id="bt_edit">수정</button>
+					    <button type="button" class="btn btn-primary" id="bt_del">삭제</button>
+				  	</div>
+				</form> 	
+			</div>
+		</div>
+	</div>
+</body>
+</html>

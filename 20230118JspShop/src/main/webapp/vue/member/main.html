@@ -1,244 +1,170 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-	<script type="text/javascript">
-		let app1;
-		let index=0;
-		
-		const Row={
-			template:`
-				<tr>
-					<td>{{m_idx}}</td>
-					<td><a href="#" v-on:click="getDetail(m_idx, id, pass)">{{m_id}}</a></td>
-					<td>{{m_name}}</td>
-					<td>{{m_pass}}</td>
-					<td>{{m_email}}</td>
-				</tr>
-			`
-			, props:['member_idx','id','name','pass','email']
-			, data(){
-				return{
-					m_idx:this.member_idx, 
-					m_id:this.id,
-					m_name:this.name,
-					m_pass:this.pass,
-					m_email:this.email
-				}
-			}, 
-			methods:{
-				getDetail:function(member_idx, id, pass){
-					index=member_idx;
-					
-					getMember(id, pass);
-				}				
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+let app1;
+	const Row={
+		template:`
+		<tr>
+	        <td><a href="#" v-on:click="getDetail(m_idx)">{{m_idx}}<a/></td>
+	        <td>{{m_id}}</td>
+	        <td>{{m_name}}</td>
+	        <td>{{m_email}}</td>
+      	</tr>
+		`
+		, props:['member_idx', 'member_id', 'member_name', 'member_email']
+		, data(){
+			return{
+				m_idx:this.member_idx,
+				m_id:this.member_id,
+				m_name:this.member_name,
+				m_email:this.member_email
+			};
+			
+		},
+		methods : {
+			getDetail:function(member_idx){
+				getMember(member_idx);
 			}
 		}
-		
+	}
 	
-		function init() {
-			app1 = new Vue({
-				el:"#app1",
-				components:{
-					"row":Row					
-				},
-				data:{
-					memberList:[],
-					member:{}
-				}, 
-				methods:{
-					beforeUpdate:function(){
-						console.log("beforeUpdate called..");
-					}, 
-					updated:function(){
-						console.log("update called..");
-					}
-					
-				}
-			});
-		}
-		
-		//회원목록
-		function getMemberList(){
-			$.ajax({
-				url:"/vue/member/list.jsp",
-				type:"get",
-				success:function(result, status, xhr){
-					console.log(result);
-					app1.memberList=result;
-				}
-			});	
-		}
-		
-		//회원등록
-		function regist(){
-			let formData = $("#form1").serialize();
-			
-			console.log(formData);
-			
-			$.ajax({
-				url:"/vue/member/regist.jsp",
-				type:"post",
-				data:formData,
-				contentType:"application/x-www-form-urlencoded;charset=utf-8",
-				success:function(result, status, xhr){
-					getMemberList();
-				}
-			});
-		}
-		
-		//회원상세
-		
-		
-		function getMember(id, pass){
-			$.ajax({
-				url:"/vue/member/detail.jsp",
-				type:"post",
-				data:{
-					id:id, 
-					pass:pass
-				},
-				success:function(result, status, xhr){
-					app1.member=result;					
-				}
-			});
-		}
-		
-		//회원수정
-		function edit(){
-			//alert(index);
-			app1.memberList[0].id="batman";
-		}
-		
-		//회원삭제
-		function del(){
-			$.ajax({
-				url:"/vue/member/delete.jsp",
-				type:"post",
-				data:{
-					id:$("#form2 input[name='id']").val(), 
-					pass:$("#form2 input[name='pass']").val()
-				},
-				success:function(result, status, xhr){
-					//alert(result.msg);
-					$("tbody").children()[index].remove();
-					getMemberList();
-					
-				}
-			});
-			
-		}
-		
-		$(function () {
-			init();
-			
-			getMemberList();
-			
-			$("#bt_regist").click(function(){
-				regist();
-			});
-			$("#bt_edit").click(function(){
-				edit();
-			});
-			$("#bt_del").click(function(){
-				del();
-			});
-			
+	function getMember(member_idx){
+		$.ajax
+	}
+
+	function init(){
+		app1=new Vue({
+			el:"#app1",
+			components : {
+				"row":Row
+			},
+			data:{
+				memberList:[]
+			}
 		});
-	</script>
-
-</head>
-
-<body>
-	<div class="container" id="app1">
+	}
 	
-		<div class="row m-3">
-				<!-- 좌측 begin -->
-				<div class="col-md-3">
-					<form id="form1">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="ID" name="id">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Pass" name="pass">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Name" name="name">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Email" name="email">
-					</div>
-					<div class="form-group">
-						<button type="button" class="btn btn-primary" id="bt_regist">등록</button>
-					</div>
-					</form>
-				</div>
-				<!-- 좌측 end -->
+	function regist(){
+		$.ajax({
+			url:"/vue/member/regist.jsp",
+			type:"post",
+			data:{
+				"id":$("#form1 input[name='id']").val(),
+				"pw": $("#form1 input[name='pw']").val(),
+				"name":$("#form1 input[name='name']").val(),
+				"email":$("#form1 input[name='email']").val()
+			},
+			success:function(result, status, xhr){
+				console.log(result);
+				getMemberList();
+			}
+		});
 		
-			<!-- 가운데 begin -->	
-			<div class="col-md-6">
-				<table class="table">
-					<thead class="thead-dark">
-						<tr>
-							<th>idx</th>
-							<th>회원아이디</th>
-							<th>이름</th>
-							<th>비밀번호</th>
-							<th>Email</th>
-						</tr>
-					</thead>
-					<tbody>
-						<template v-for="(member, index) in memberList">			
-							<row 
-								:key="member['member_idx']"
-								:member_idx="member['member_idx']" 
-								:id="member['id']" 
-								:name="member['name']" 
-								:pass="member['pass']" 
-								:email="member['email']" 
-							/>
+	}
 
-						</template>
-					</tbody>
-				</table>		
-			
-			</div>
-			<!-- 가운데 end -->
-			
-			<div class="col-md-3">
-				<form id="form2">
-					<div class="form-group">
-						<input type="text" class="form-control" :value="member['id']" name="id">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" :value="member['pass']" name="pass">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" :value="member['name']" name="name">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" :value="member['email']" name="email">
-					</div>
+	function getMemberList(){
+		$.ajax({
+			url:"/vue/member/list.jsp",
+			type:"get",
+			success:function(result, status, xhr){
+				//console.log(result);
+				app1.memberList=result;
+			}
+		});
+	}
+	
+	$(function(){
+		init();
+		getMemberList();
+		$("#bt_regist").click(function(){
+			regist();
+		});
+		
+	});
+</script>
+</head>
+<body>
+<div class="container" id="app1">
+	<div class="row mt-3 border">
+		<div class="col-md-2 border">
+			<form id="form1">
 				<div class="form-group">
-					<button type="button" class="btn btn-primary" id="bt_edit">수정</button>
-					<button type="button" class="btn btn-primary" id="bt_del">삭제</button>
-				</div>
-				</form>
-			</div>
-		
+	   				 <input type="text" class="form-control" placeholder="Enter id" id="id" name="id">
+	  			</div>
+	  			<div class="form-group">
+	   				 <input type="password" class="form-control" placeholder="Enter pw" id="pw" name="pw">
+	  			</div>
+	  			<div class="form-group">
+	   				 <input type="text" class="form-control" placeholder="Enter name" id="name" name="name">
+	  			</div>
+	  			<div class="form-group">
+	   				 <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
+	  			</div>
+	  			  <div class="form-group">
+	   				 <button type="button" class="btn btn-primary" id="bt_regist">등록</button>
+	  			</div>
+	  		</form>
 		</div>
-		
+		<div class="col-md-8 border">
+			<table class="table">
+			    <thead class="thead-dark">
+			      <tr>
+			        <th>Idx</th>
+			        <th>Id</th>
+			        <th>Name</th>
+			        <th>email</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			     	<template v-for="member in memberList">
+			     		<row v-bind:member_idx="member['member_idx']"
+			     				v-bind:member_id="member['id']"
+			     				v-bind:member_name="member['name']"
+			     				v-bind:member_email="member['email']"
+			     		/>
+			     	</template>
+			    </tbody>
+			  </table>
+		</div>
+		<div class="col-md-2 border">
+					<div class="form-group">
+   				 <input type="text" class="form-control" id="id2">
+  			</div>
+  			<div class="form-group">
+   				 <input type="password" class="form-control" id="pw2">
+  			</div>
+  			<div class="form-group">
+   				 <input type="text" class="form-control" id="name2">
+  			</div>
+  			<div class="form-group">
+   				 <input type="email" class="form-control" id="email2">
+  			</div>
+  			  <div class="form-group">
+   				 <button type="button" class="btn btn-primary" id="bt_edit">수정</button>
+   				 <button type="button" class="btn btn-primary" id="delete">삭제</button>
+  			</div>
+		</div>
 	</div>
-</body>
 
+
+</div>
+
+</body>
 </html>
