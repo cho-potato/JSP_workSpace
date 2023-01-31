@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="20230131MVCApp3"/>
+			<item value="20230131MVCApp2"/>
 			<item value="20230130MVCApp"/>
 			<item value="20230118JspShop"/>
 			<item value="MemberApp"/>
@@ -15,11 +17,12 @@
 			<item value="YourbatisGallery"/>
 			<item value="MybatisGallery"/>
 			<item value="GalleryProject"/>
-			<item value="NoticeProject"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="20230131MVCApp3"/>
+			<item value="20230131MVCApp2"/>
 			<item value="20230130MVCApp"/>
 			<item value="20230118JspShop"/>
 			<item value="MemberApp"/>
@@ -33,7 +36,6 @@
 			<item value="YourbatisGallery"/>
 			<item value="MybatisGallery"/>
 			<item value="GalleryProject"/>
-			<item value="NoticeProject"/>
 		</list>
 		<list key="version">
 			<item value="0.0.1-SNAPSHOT"/>
