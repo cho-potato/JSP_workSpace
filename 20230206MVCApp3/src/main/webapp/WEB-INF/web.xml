@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>20230206MVCApp3</display-name>
+	<!-- 웹 어플리케이션의 모든 요청이 오직 하나의 진입점으로 모일 수 있도록 매핑걸기 -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>com.mvc3.controller.DispatcherServlet</servlet-class>
+		<!-- 개발자는 해당 서블릿이 태어나면서 초기화 되는 시기에 무언가 전달할 환경정보가 있다면 아래의 파라미터 태그에 정보를 전달할 수 있다 -->
+		<init-param>
+			<param-name>contextConfigLoaction</param-name>
+			<param-value>/WEB-INF/mapping.data</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+</web-app>

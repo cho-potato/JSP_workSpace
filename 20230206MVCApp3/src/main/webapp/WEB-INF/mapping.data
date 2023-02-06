@@ -1,0 +1,27 @@
+#이 파일 형식이 XML 문서였다면, XML 파서를 이용하면 되고
+#이 파일 형식이 JSON 형식으로 저장된 파일이라면 JSON 파서를 이용하면 되며
+#이 파일 형식이 key-value의 쌍인 map으로 되어 있으므로 Properties 객체를 이용하면 된다
+#Properties : java.util 패키지에 들어이쓴 객체 중 map의 하위객체
+#특히 이 객체는 읽어들인 대상 데이터가 key-value의 쌍으로 이루어진 경우 해석능력이 있다
+#(Spring 창시자의 경우 이 파일을 XML로 구현)
+
+#컨트롤러 매핑
+/blood.do=com.mvc3.controller.BloodController
+/movie.do=com.mvc3.controller.MovieController
+
+#게시판 관련
+/board/list.do=com.mvc3.controller.board.ListController
+/board/regist.do=com.mvc3.controller.board.RegistController
+/board/detail.do=com.mvc3.controller.board.DetailController
+/board/delete.do=com.mvc3.controller.board.DeleteController
+/board/update.do=com.mvc3.controller.board.UpdateController
+
+#뷰 매핑
+/blood/view=/blood/result.jsp
+/movie/view=/movie/result.jsp
+
+/board/view/list=/board/list.jsp
+/board/view/regist=/board/list.do
+/board/view/detail=/board/detail.jsp
+/board/view/delete=/board/list.do
+/board/view/update=/board/detail.jsp
