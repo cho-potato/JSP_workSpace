@@ -36,7 +36,7 @@ public class DetailController implements Controller{
 	}
 
 
-	public boolean isFoward() {
+	public boolean isForward() {
 		return true;
 	}
 

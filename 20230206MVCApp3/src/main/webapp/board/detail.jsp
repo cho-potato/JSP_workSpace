@@ -33,12 +33,22 @@ function del() {
 		$("#form1").submit();
 	}
 }
-
+function edit(){
+	if(confirm("수정하시겠습니까?")){
+		$("#form1").attr({
+			action:"/board/edit.do",
+			method:"post"
+		});
+		$("#form1").submit();		
+	}
+}
 $(function() {
 	$("#bt_del").click(function() {
 		del();
 	});	
-	
+	$("#bt_edit").click(function(){
+		edit();	
+	});
 });
 </script> 
 

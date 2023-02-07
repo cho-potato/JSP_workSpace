@@ -29,7 +29,7 @@ public class BloodController implements Controller{
 	public String getViewName() {
 		return "/blood/view";
 	}
-	public boolean isFoward() {
+	public boolean isForward() {
 		// TODO Auto-generated method stub
 		return false;
 	}

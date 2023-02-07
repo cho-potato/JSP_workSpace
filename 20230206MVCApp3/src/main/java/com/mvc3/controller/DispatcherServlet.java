@@ -107,7 +107,7 @@ public class DispatcherServlet extends HttpServlet{
 				// RequestDispatcher dis = request.getRequestDispatcher(viewName); // 5단계) 결과가 있을 경우 forwarding, 결과가 없을 경우 redirect
 				
 				// 포워딩 할 경우
-				if(controller.isFoward()) {
+				if(controller.isForward()) {
 				RequestDispatcher dis = request.getRequestDispatcher(viewPage); // board
 				dis.forward(request, response); // 전달 (여기가 포워딩)
 				} else {

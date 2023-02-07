@@ -40,7 +40,7 @@ public class RegistController implements Controller{
 
 	// 글 등록 후에는 forward가 아니라 Redirect를 해야 갱신된 목록을 볼 수 있다
 	// 만약 안했을 경우 regist.do가 남아있기 때문에 새로고침만으로도 글 등록이 되어버림
-	public boolean isFoward() {
+	public boolean isForward() {
 		return false;
 	}
 	

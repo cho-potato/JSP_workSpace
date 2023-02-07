@@ -32,7 +32,7 @@ public class DeleteController implements Controller{
 		return "/board/view/delete";
 	}
 
-	public boolean isFoward() {
+	public boolean isForward() {
 		return false; // 재접속
 	}
 

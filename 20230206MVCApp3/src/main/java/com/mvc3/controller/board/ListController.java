@@ -35,7 +35,7 @@ public class ListController implements Controller{
 		return "/board/view/list"; // 확장자 jsp 넣으면 안됨
 	}
 
-	public boolean isFoward() {
+	public boolean isForward() {
 		return true;
 	}
 	

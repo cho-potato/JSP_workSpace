@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="reactnotice.mybatis.MybatisConfigReact"/>
-    <fullyQualifiedTypeName name="reactnotice.domain.ReactNotice"/>
-    <fullyQualifiedTypeName name="empapp.mybatis.Mybatisconfig"/>
-    <fullyQualifiedTypeName name="empapp.mybatis.MybatisConfig"/>
-    <fullyQualifiedTypeName name="reactNotice.mybatis.MybatisConfigReact"/>
-    <fullyQualifiedTypeName name="notice.domain.Notice"/>
-    <fullyQualifiedTypeName name="notice.mybatis.MybatisConfig"/>
     <fullyQualifiedTypeName name="com.jspshop.domain.Admin"/>
     <fullyQualifiedTypeName name="com.jspshop.domain.Category"/>
     <fullyQualifiedTypeName name="com.jspshop.domain.Color"/>
@@ -56,8 +49,15 @@
     <fullyQualifiedTypeName name="com.mvc3.exception.BoardException"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
     <fullyQualifiedTypeName name="com.mvc3.domain.Board"/>
-    <fullyQualifiedTypeName name="com.mvc3.controller.Controller"/>
-    <fullyQualifiedTypeName name="com.mvc3.mybatis.MybatisConfig"/>
     <fullyQualifiedTypeName name="com.mvc3.model.board.BoardDAO"/>
+    <fullyQualifiedTypeName name="com.mvc3.exception.DeptException"/>
+    <fullyQualifiedTypeName name="com.mvc3.domain.Dept"/>
+    <fullyQualifiedTypeName name="com.mvc3.mybatis.MybatisConfig"/>
+    <fullyQualifiedTypeName name="com.mvc3.model.emp.DeptDAO"/>
+    <fullyQualifiedTypeName name="com.mvc3.model.emp.EmpDAO"/>
+    <fullyQualifiedTypeName name="com.mvc3.domain.Emp"/>
+    <fullyQualifiedTypeName name="com.mvc3.controller.Controller"/>
+    <fullyQualifiedTypeName name="com.mvc3.model.emp.EmpService"/>
+    <fullyQualifiedTypeName name="com.mvc3.exception.EmpException"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
 </qualifiedTypeNameHistroy>

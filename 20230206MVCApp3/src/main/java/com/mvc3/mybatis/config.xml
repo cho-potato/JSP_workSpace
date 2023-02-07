@@ -5,6 +5,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.mvc3.domain.Board" alias="Board"/>
+		<typeAlias type="com.mvc3.domain.Dept" alias="Dept"/>
+		<typeAlias type="com.mvc3.domain.Emp" alias="Emp"/>
 	</typeAliases>
   <environments default="development">
     <environment id="development">
@@ -16,6 +18,8 @@
   </environments>
   <mappers>
     <mapper resource="com/mvc3/mybatis/BoardMapper.xml"/>
+    <mapper resource="com/mvc3/mybatis/DeptMapper.xml"/>
+    <mapper resource="com/mvc3/mybatis/EmpMapper.xml"/>
   </mappers>
 </configuration>
 

@@ -13,6 +13,6 @@ public interface Controller {
 	public String getViewName();
 	
 	// 포워딩 여부
-	public boolean isFoward();
+	public boolean isForward();
 	
 }
